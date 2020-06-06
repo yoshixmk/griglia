@@ -111,10 +111,10 @@ map.size -> O(1)
 
 ## テスト
 
-最低限以下は問題なく動作することを確認してください。なお以下に `key`, `value` として登場する `Key`, `Value` クラスはあくまでも例であり、この名前である必要も、実装にこだわる必要もありません。ただし `key` となるクラスに対して制約として `interface` を用意した場合は相応の実装をしてください。
+テストファイルの内容は問題なく動作することを確認してください。テストファイルに `key`, `value` として登場する `Key`, `Value` クラスはあくまでも例であり、この名前である必要も、実装にこだわる必要もありません。ただし `key` となるクラスに対して制約として `interface` を用意した場合は相応の実装をしてください。
 
 ### RUN
 
 ```bash
-deno test object-projection/__tests__/MapMap.spec.ts
+deno test object-projection/MapMap.spec.ts
 ```
