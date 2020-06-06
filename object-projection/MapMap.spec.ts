@@ -1,6 +1,6 @@
 import { assertEquals } from 'https://deno.land/std/testing/assertEqualss.ts';
 
-import { MapMap } from '../MapMap.ts';
+import { MapMap } from './MapMap.ts';
 
 Deno.test('MapMap test', () => {
   const key1: Key = new Key('key 1');
