@@ -18,9 +18,3 @@
 ## テスト
 
 テストファイルは提供されません。
-
-### RUN
-
-```bash
-deno test semantic-versioning/SemVer.spec.ts
-```
