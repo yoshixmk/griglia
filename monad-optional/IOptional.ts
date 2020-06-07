@@ -10,5 +10,5 @@ export interface IOptional<T> {
 
   filter(predicate: (value: T) => boolean): IOptional<T>;
 
-  map<U>(mapper: (value: T) => unknown): IOptional<U>;
+  map<U>(mapper: (value: T) => U): IOptional<U>;
 }
