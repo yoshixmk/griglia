@@ -20,7 +20,7 @@ export interface ITry<T, E extends Error> {
 
   map<U>(mapper: (value: T) => U): ITry<U, E>;
 
-  recover<U>(mapper: (value: T) => U): ITry<U, E>;
+  recover<U>(mapper: (err: E) => U): ITry<U, E>;
 }
 ```
 
