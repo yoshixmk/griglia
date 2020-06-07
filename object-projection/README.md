@@ -1,4 +1,4 @@
-# JavaScript と TypeScript の `Map` について
+# Obect Projection
 
 ## 前提
 
