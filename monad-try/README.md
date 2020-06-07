@@ -31,8 +31,8 @@ export interface ITry<T, E extends Error> {
 |`get`|内包する値を取得する。内包する値が例外の場合は `E` を投げる|
 |`isSuccess`|内包している値が例外ではない場合は `true` を返す|
 |`filter`|内包している値が `predicate` を満たすか検証する|
-|`map`|`mapper` を実行した結果の `IOptional` を返す|
-|`recover`|内包している値が例外である場合は `mapper` を実行し、その結果の `IOtional` を返す|
+|`map`|`mapper` を実行した結果の `ITry` を返す|
+|`recover`|内包している値が例外である場合は `mapper` を実行し、その結果の `ITry` を返す|
 
 ## テスト
 
