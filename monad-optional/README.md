@@ -11,7 +11,7 @@
 なおクラス `Optional` は同梱している `IOptional` を実装してください。なお、すでにあるパッケージを使ってはいけません。
 
 ```typescript
-export interface IOptional<T> {
+interface IOptional<T> {
   get(): T;
 
   getOrElse(other: T): T;
@@ -19,7 +19,7 @@ export interface IOptional<T> {
   isPresent(): boolean;
 
   ifPresent(consumer: (value: T) => void): void;
-  ifPresent(consumer: (value: Promise<T>) => void): Promise<void>;
+  ifPresent(consumer: (value: T) => Promise<void>): Promise<void>;
 
   filter(predicate: (value: T) => boolean): IOptional<T>;
 

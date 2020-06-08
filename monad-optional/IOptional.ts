@@ -6,7 +6,7 @@ export interface IOptional<T> {
   isPresent(): boolean;
 
   ifPresent(consumer: (value: T) => void): void;
-  ifPresent(consumer: (value: Promise<T>) => void): Promise<void>;
+  ifPresent(consumer: (value: T) => Promise<void>): Promise<void>;
 
   filter(predicate: (value: T) => boolean): IOptional<T>;
 
