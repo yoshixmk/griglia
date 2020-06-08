@@ -11,7 +11,7 @@
 なおクラス `Try` は同梱している `ITry` を実装してください。なお、すでにあるパッケージを使ってはいけません。
 
 ```typescript
-export interface ITry<T, E extends Error> {
+interface ITry<T, E extends Error> {
   get(): T;
 
   isSuccess(): boolean;
