@@ -5,6 +5,11 @@
 
 ```typescript
 console.log(alternate(
+  [1, 3, 5]
+));
+// -> [1, 3, 5]
+
+console.log(alternate(
   [1, 3, 5],
   [2, 4, 6]
 ));
@@ -13,7 +18,7 @@ console.log(alternate(
 console.log(alternate(
   [1, 3, 5],
   [2, 4]
-]));
+));
 // -> [1, 2, 3, 4, 5]
 
 console.log(alternate(
@@ -45,6 +50,14 @@ console.log(alternate(
   [2, 4, 6]
 ));
 // -> [2, 4, 6]
+
+console.log(alternate(
+  [1, 4, 7],
+  [2, 5, 8],
+  [3, 6, 9]
+));
+// -> [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
 ```
 
 ## テスト
