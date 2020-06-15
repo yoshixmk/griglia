@@ -5,11 +5,11 @@ JavaScript, TypeScriptにおける `Plain Object (Plain Old Javascript Object)` 
 なお `Plain Object` は以下のように定義されているとします。
 
 ```typescript
-type Primitive = null | undefined | number | string | boolean;
+type Primitive = undefined | null | boolean | number | string;
 type PlainObject = {
-  [key: string]: Item | ArrayLike<Item>;
+  [key: string]: Item;
 };
-type Item = Primitive | PlainObject;
+type Item = Primitive | PlainObject | ArrayLike<Item>;
 ```
 
 ## 注意
