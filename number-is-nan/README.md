@@ -1,6 +1,6 @@
 # Number is NaN
 
-JavaScript, TypeScriptの `number` には `NaN` という値があります。
+JavaScript, TypeScriptの `number` 型には `NaN` という値があります。
 
 この値は `number` 型でありながら、いかなる値との比較も `false` を返す、等値比較ができない値です。
 
