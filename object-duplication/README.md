@@ -15,6 +15,7 @@ type Item = Primitive | PlainObject | ArrayLike<Item>;
 ## 注意
 
 * 他のパッケージを使ってはいけません
+* `JSON.stringify(), JSON.parse()` を使ってはいけません
 
 ## テスト
 

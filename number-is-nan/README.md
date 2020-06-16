@@ -8,8 +8,8 @@ JavaScript, TypeScriptの `number` 型には `NaN` という値があります�
 
 ## 注意
 
-* `isNaN()` , `Number.isNaN()` を使ってはいけません
 * 他のパッケージを使ってはいけません
+* `isNaN()` , `Number.isNaN()` を使ってはいけません
 
 ## テスト
 
