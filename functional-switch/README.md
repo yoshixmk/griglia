@@ -13,7 +13,7 @@ switch (value) {
 }
 ```
 
-を作りましょう。
+を作りましょう
 
 ### Overview
 
