@@ -1,7 +1,7 @@
 # Functional switch
 
 ```typescript
-switch (vaue) {
+switch (value) {
   case value1:
     // ...
     break;
