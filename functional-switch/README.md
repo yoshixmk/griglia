@@ -57,7 +57,7 @@ sw(VARIABLE)
 以下ではこの `type aliases` を使用します
 
 ```typescript
-typeof DayOfWeek =
+type DayOfWeek =
   SUNDAY |
   MONDAY |
   TUESDAY |
