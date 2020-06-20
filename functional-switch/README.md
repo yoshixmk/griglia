@@ -1,5 +1,44 @@
 # Functional switch
 
+```typescript
+switch (vaue) {
+  case value1:
+    // ...
+    break;
+  case value2:
+    // ...
+    break;
+  default:
+    // ...
+}
+```
+
+を作りましょう。
+
+### Overview
+
+```typescript
+sw(VARIABLE)
+  .case(CONSTANT_VALUE1, FALL_THROUGH, () => {
+    // ...
+  })
+  .case(CONSTANT_VALUE2, FALL_THROUGH, () => {
+    // ...
+  })
+  .case(CONSTANT_VALUE3, () => {
+    // ...
+  })
+  .case(CONSTANT_VALUE4, () => {
+    // ...
+  })
+  .default(() => {
+    // ...
+  })
+  .recover((err) => {
+    //
+  });
+```
+
 ## Requirements
 
 1. `sw()` で開始
@@ -27,30 +66,6 @@
     1. 第1引数は `type UnaryFunction<E, R> = (err: E) => R` の `UNARY_FUNCTION`
     1. `recover()` のうしろに `case()` , `default()` をつけることはできない
     1. `return` をすればその値が `sw()` の戻り値になる ( `case()` , `default()` と同じ)
-
-### Overview
-
-```typescript
-sw(VARIABLE)
-  .case(CONSTANT_VALUE1, FALL_THROUGH, () => {
-    // ...
-  })
-  .case(CONSTANT_VALUE2, FALL_THROUGH, () => {
-    // ...
-  })
-  .case(CONSTANT_VALUE3, () => {
-    // ...
-  })
-  .case(CONSTANT_VALUE4, () => {
-    // ...
-  })
-  .default(() => {
-    // ...
-  })
-  .recover((err) => {
-    //
-  });
-```
 
 ### Examples
 
