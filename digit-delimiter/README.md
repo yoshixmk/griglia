@@ -14,7 +14,7 @@
 *例*
 
 ```typescript
-const num: string = 12345.678;
+const num: string = 123456.789;
 
 const digit: Digit = new Digit(num);
 
@@ -30,7 +30,7 @@ console.log(digit.stringify());
 *例*
 
 ```typescript
-const num: string = 12345.678;
+const num: string = 123456.789;
 
 const digit: Digit = new Digit(num);
 
@@ -46,7 +46,7 @@ console.log(digit.stringify());
 *例*
 
 ```typescript
-const num: string = 12345.678;
+const num: string = 123456.789;
 
 const digit: Digit = new Digit(num);
 
