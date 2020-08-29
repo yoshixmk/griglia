@@ -2,11 +2,11 @@
 
 ## Preparation
 
-`Deno` を使えるようにしておく
+`Deno` required
 
 ```Shell
-$ deno --version
-deno 1.0.5
-v8 8.4.300
-typescript 3.9.2
+> deno --version  
+deno 1.3.1
+v8 8.6.334
+typescript 3.9.7
 ```
