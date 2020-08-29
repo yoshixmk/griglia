@@ -1,6 +1,6 @@
 # Griglia
 
-## 前準備
+## Preparation
 
 `Deno` を使えるようにしておく
 
