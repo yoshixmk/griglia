@@ -1,4 +1,4 @@
-export class Digit {
+export class DelimiterisedNumber {
   private num: number;
 
   public constructor(num: number) {
