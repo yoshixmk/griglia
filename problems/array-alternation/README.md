@@ -2,12 +2,12 @@
 
 引数に与えられた配列を合成します。
 
-合成の方法は引数が `(arr1, arr2, arr3)` だった場合 `arr1[0], arr2[0], arr3[0], arr1[1], arr2[1], arr3[2], ...` と合成します。  
+合成の方法は引数が`(arr1, arr2, arr3)`だった場合`arr1[0], arr2[0], arr3[0], arr1[1], arr2[1], arr3[2], ...`と合成します。  
 つまり、添字を統一して与えられたすべての配列の要素を取得します。 
 
 ## Implementation
 
-以下の結果となる `alternate<<T>(...arrays: Array<Array<T>): Array<T>` を作ってください。
+以下の結果となる`alternate<<T>(...arrays: Array<Array<T>): Array<T>`を作ってください。
 
 ```typescript
 alternate<number>(
@@ -80,7 +80,7 @@ alternate<number>(
 
 ## Tests
 
-`Alternation.spec.ts` があるので参照してください。
+`Alternation.spec.ts`があるので参照してください。
 
 ```
 yarn test

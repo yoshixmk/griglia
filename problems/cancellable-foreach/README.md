@@ -1,8 +1,8 @@
 # Cancellable forEach
 
-`Array, Map, Set` など、コレクションとなるクラスの多くには `forEach()` という内包する要素を順次実行するためのメソッドがあります。
+`Array, Map, Set`など、コレクションとなるクラスの多くには`forEach()`という内包する要素を順次実行するためのメソッドがあります。
 
-`forEach()` は名の通り、そのコレクションが持っている要素をすべてコールバック形式で実行できます。使用者側からは以下のようにして使います。
+`forEach()`は名の通り、そのコレクションが持っている要素をすべてコールバック形式で実行できます。使用者側からは以下のようにして使います。
 
 ```typescript
 collection.forEach((v: V) => {
@@ -12,7 +12,7 @@ collection.forEach((v: V) => {
 
 ## Implementation
 
-新しくコレクション `AwesomeCollection` を作っているとして、この `forEach` を途中でキャンセルできるように実装してください。
+新しくコレクション`AwesomeCollection`を作っているとして、この`forEach()`を途中でキャンセルできるように実装してください。
 
 以下のコンストラクタは一例です。実際はこのとおりに実装する必要はありません。
 
@@ -50,7 +50,7 @@ collection.forEach((v: string, cancel: Cancel) => {
 
 ## Tests
 
-`AwesomeCollection.spec.ts` があるので参照してください。
+`AwesomeCollection.spec.ts`があるので参照してください。
 
 ```
 yarn test
