@@ -47,7 +47,7 @@
     "typescript": "4.0.2"
   },
   "engines": {
-    "node": ">= 12.0.0",
+    "node": ">= 14.5.0",
     "npm": "npm is not supported"
   },
   "engineStrict": true
