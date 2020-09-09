@@ -1,10 +1,10 @@
 {
-  "name": "@jaashita/delimiterized-number",
+  "name": "@jaashita/numerical-systems",
   "version": "1.0.0",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git@github.com:jamashita/griglia.git/problems/delimiterized-number"
+    "url": "git@github.com:jamashita/griglia.git/problems/numerical-systems"
   },
   "license": "MIT",
   "author": "jamashita <jamashita@arachnid.xyz>",
