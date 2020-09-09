@@ -1,6 +1,5 @@
 {
   "name": "@jamashita/griglia",
-  "version": "1.0.0",
   "private": true,
   "repository": {
     "type": "git",
@@ -8,13 +7,23 @@
   },
   "license": "MIT",
   "author": "jamashita <jamashita@arachnid.xyz>",
-  "main": "index.js",
   "workspaces": {
     "packages": [
       "problems/*"
     ]
   },
-  "scripts": {},
+  "scripts": {
+    "build": "lerna run --parallel build",
+    "clean": "lerna run --parallel clean",
+    "format": "eslint --fix 'packages/*/src/**/*.{ts,tsx}'",
+    "preregister": "yarn build",
+    "reset": "lerna clean",
+    "setup": "lerna bootstrap && lerna link",
+    "test": "jest test --detectOpenHandles --passWithNoTests",
+    "update": "yarn update:upgrade && yarn update:install",
+    "update:install": "yarn install && yarn upgrade && lerna run --parallel update:install",
+    "update:upgrade": "ncu --upgrade --timeout 600000 && lerna run --parallel update:upgrade"
+  },
   "devDependencies": {
     "@jamashita/eslint-config": "1.0.10",
     "@types/jest": "26.0.13",
