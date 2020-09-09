@@ -60,14 +60,13 @@
     /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
     "baseUrl": ".",
     /* Base directory to resolve non-absolute module names. */
-    "paths": {
-      "@jamashita/publikum-*": [
-        "packages/*/src"
-      ]
-    },
-    /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
+    // "paths": {},                           /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
-    // "typeRoots": [],                       /* List of folders to include type definitions from. */
+    "typeRoots": [
+      "packages/**/src/@types",
+      "node_modules/@types"
+    ],
+    /* List of folders to include type definitions from. */
     "types": [
       "node",
       "jest"
@@ -97,7 +96,7 @@
     /* Disallow inconsistently-cased references to the same file. */
   },
   "include": [
-    "packages/**/src"
+    "problems/**/src"
   ],
   "exclude": [
     "dist",

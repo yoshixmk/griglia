@@ -15,8 +15,7 @@
   "scripts": {
     "build": "lerna run --parallel build",
     "clean": "lerna run --parallel clean",
-    "format": "eslint --fix 'packages/*/src/**/*.{ts,tsx}'",
-    "preregister": "yarn build",
+    "format": "eslint --fix 'problems/*/src/**/*.{ts,tsx}'",
     "reset": "lerna clean",
     "setup": "lerna bootstrap && lerna link",
     "test": "jest test --detectOpenHandles --passWithNoTests",
@@ -37,7 +36,7 @@
     "eslint-plugin-jest": "24.0.0",
     "husky": "4.3.0",
     "jest": "26.4.2",
-    "lerna": "^3.22.1",
+    "lerna": "3.22.1",
     "lint-staged": "10.3.0",
     "npm-check-updates": "8.1.1",
     "rimraf": "3.0.2",
