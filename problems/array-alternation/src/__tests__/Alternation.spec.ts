@@ -2,7 +2,7 @@ import { alternate } from '../Alternation';
 
 describe('Alternation', () => {
   it('all in one', () => {
-    expect.assertions(1);
+    expect.assertions(9);
 
     expect(alternate<number>(
       [1, 3, 5]

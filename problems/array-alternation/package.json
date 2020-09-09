@@ -10,6 +10,7 @@
   "author": "jamashita <jamashita@arachnid.xyz>",
   "scripts": {
     "build": "yarn clean && tsc -p tsconfig.json",
+    "format": "eslint --fix 'src/**/*.{ts,tsx}'",
     "test": "jest test",
     "clean": "rimraf dist",
     "update": "yarn update:upgrade && yarn update:install",
@@ -21,5 +22,8 @@
     "npm": "npm is not supported"
   },
   "engineStrict": true,
-  "devDependencies": {}
+  "devDependencies": {
+    "jest": "26.4.2",
+    "sinon": "9.0.3"
+  }
 }
