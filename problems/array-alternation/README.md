@@ -7,7 +7,7 @@
 
 ## Implementation
 
-以下の結果となる`alternate<<T>(...arrays: Array<Array<T>): Array<T>`を作ってください。
+以下の結果となる関数`alternate<<T>(...arrays: Array<Array<T>): Array<T>`を作ってください。
 
 ```typescript
 alternate<number>(
