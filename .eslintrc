@@ -10,5 +10,8 @@
   "extends": [
     "@jamashita/eslint-config",
     "@jamashita/eslint-config/jest"
-  ]
+  ],
+  "rules": {
+    "no-console": "warn"
+  }
 }
