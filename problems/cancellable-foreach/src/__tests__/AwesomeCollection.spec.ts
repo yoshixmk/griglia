@@ -2,7 +2,7 @@ import sinon, { SinonSpy } from 'sinon';
 import { AwesomeCollection, Cancel } from '../AwesomeCollection';
 
 describe('AwesomeCollection', () => {
-  it('all in one', () => {
+  it('tests', () => {
     expect.assertions(1);
 
     const collection: AwesomeCollection<string | Error> = new AwesomeCollection<string | Error>(

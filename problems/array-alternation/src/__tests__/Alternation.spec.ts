@@ -1,7 +1,7 @@
 import { alternate } from '../Alternation';
 
 describe('Alternation', () => {
-  it('all in one', () => {
+  it('tests', () => {
     expect.assertions(9);
 
     expect(alternate<number>(
