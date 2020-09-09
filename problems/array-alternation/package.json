@@ -1,5 +1,5 @@
 {
-  "name": "array-alternation",
+  "name": "@jaashita/griglia-array-alternation",
   "version": "1.0.0",
   "private": true,
   "repository": {
@@ -10,6 +10,7 @@
   "author": "jamashita <jamashita@arachnid.xyz>",
   "scripts": {
     "build": "yarn clean && tsc -p tsconfig.json",
+    "test": "jest test",
     "clean": "rimraf dist",
     "update": "yarn update:upgrade && yarn update:install",
     "update:install": "yarn install",

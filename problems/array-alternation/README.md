@@ -1,71 +1,87 @@
-# Array Alternation
+# Array alternation
 
-以下の結果となる `alternate` を作ってください。
-ただし引数に使用する配列を破壊してはいけません。
+引数に与えられた配列を合成します。
+
+合成の方法は引数が `(arr1, arr2, arr3)` だった場合 `arr1[0], arr2[0], arr3[0], arr1[1], arr2[1], arr3[2], ...` と合成します。  
+つまり、添字を統一して与えられたすべての配列の要素を取得します。 
+
+## Implementation
+
+以下の結果となる `alternate<<T>(...arrays: Array<Array<T>): Array<T>` を作ってください。
 
 ```typescript
-console.log(alternate(
+alternate<number>(
   [1, 3, 5]
-));
+);
 // -> [1, 3, 5]
 
-console.log(alternate(
+alternate<number>(
   [1, 3, 5],
   [2, 4, 6]
-));
+);
 // -> [1, 2, 3, 4, 5, 6]
 
-console.log(alternate(
+alternate<number>(
   [1, 3, 5],
   [2, 4]
-));
+);
 // -> [1, 2, 3, 4, 5]
 
-console.log(alternate(
-  [1, 2, 3],
-  [4, 5]
-));
-// -> [1, 4, 2, 5, 3]
-
-console.log(alternate(
+alternate<number>(
   [1, 3, 5],
   [0]
-));
+);
 // -> [1, 0, 3, 5]
 
-console.log(alternate(
+alternate<number>(
   [1, 3, 5],
   []
-));
+);
 // -> [1, 3, 5]
 
-console.log(alternate(
+alternate<number>(
   [3],
   [2, 4, 6]
-));
+);
 // -> [3, 2, 4, 6]
 
-console.log(alternate(
+alternate<number>(
   [],
   [2, 4, 6]
-));
+);
 // -> [2, 4, 6]
 
-console.log(alternate(
-  [1, 4, 7],
-  [2, 5, 8],
-  [3, 6, 9]
-));
-// -> [1, 2, 3, 4, 5, 6, 7, 8, 9]
+alternate<number>(
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+);
+// -> [1, 4, 7, 2, 5, 8, 3, 6, 9]
 
+alternate<number>(
+  [1],
+  [4, 5, 6],
+  [],
+  [8, 9]
+);
+// -> [1, 4, 8, 5, 9, 6]
 ```
 
-## テスト
+## Concepts
 
-上記内容と同じテスト `Alternation.spec.ts` があるので参照してください。
+* 与えられた配列を縦に舐めることを意味しています
+* 配列の長さは同じである必要がありません
+    * 配列が他より短い場合はそれ以降その配列から値を取得されることはありません
 
-### RUN
+## Conditions
 
-```bash
-deno test array-alternation/Alternation.spec.ts
+* 引数の配列を破壊してはいけません
+* 他のパッケージを使ってはいけません
+
+## Tests
+
+`Alternation.spec.ts` があるので参照してください。
+
+```
+yarn test
 ```
