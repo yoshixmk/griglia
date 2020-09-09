@@ -1,0 +1,40 @@
+{
+  "name": "@jamashita/griglia",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jamashita/griglia.git"
+  },
+  "author": "jamashita <jamashita@arachnid.xyz>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {},
+  "devDependencies": {
+    "@jamashita/eslint-config": "1.0.10",
+    "@types/jest": "26.0.13",
+    "@types/node": "14.6.4",
+    "@types/sinon": "9.0.5",
+    "@typescript-eslint/eslint-plugin": "4.0.1",
+    "@typescript-eslint/parser": "4.0.1",
+    "@typescript-eslint/typescript-estree": "4.0.1",
+    "eslint": "7.8.1",
+    "eslint-plugin-import": "2.22.0",
+    "eslint-plugin-jest": "24.0.0",
+    "husky": "4.3.0",
+    "jest": "26.4.2",
+    "lerna": "^3.22.1",
+    "lint-staged": "10.3.0",
+    "npm-check-updates": "8.1.1",
+    "rimraf": "3.0.2",
+    "sinon": "9.0.3",
+    "sort-package-json": "1.44.0",
+    "ts-jest": "26.3.0",
+    "typescript": "4.0.2"
+  },
+  "engines": {
+    "node": ">= 12.0.0",
+    "npm": "npm is not supported"
+  },
+  "engineStrict": true
+}
