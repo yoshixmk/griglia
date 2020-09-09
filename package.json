@@ -1,14 +1,19 @@
 {
   "name": "@jamashita/griglia",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git@github.com:jamashita/griglia.git"
   },
-  "author": "jamashita <jamashita@arachnid.xyz>",
   "license": "MIT",
-  "private": true,
+  "author": "jamashita <jamashita@arachnid.xyz>",
+  "main": "index.js",
+  "workspaces": {
+    "packages": [
+      "problems/*"
+    ]
+  },
   "scripts": {},
   "devDependencies": {
     "@jamashita/eslint-config": "1.0.10",
