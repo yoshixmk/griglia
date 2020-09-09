@@ -1,16 +1,26 @@
 # Number is NaN
 
-JavaScript, TypeScriptの `number` 型には `NaN` という値があります。
+TypeScriptの`number`型には`NaN`という値があります。この値は`number`型でありながら、他のいかなる`number`型の値との比較も`false`を返す、等値比較ができない値です。
 
-この値は `number` 型でありながら、いかなる値との比較も `false` を返す、等値比較ができない値です。
+## Implementation
 
-ある `unknown` 型の値が与えられたときに、それが `NaN` であるかどうかを判定するメソッド `nan` を実装してください。
+ある`unknown`型の値が与えられたときに、それが `NaN`であるかどうかを判定する関数 `nan()`を実装してください。
 
-## 注意
+## Concepts
 
+* プログラムの問題というよりは読解力の問題です
+* `NaN`は`Type predicate`を使うことができません
+
+## Conditions
+
+* `isNaN()`,`Number.isNaN()`を使ってはいけません
+    * 問題の意義が崩壊します
 * 他のパッケージを使ってはいけません
-* `isNaN()` , `Number.isNaN()` を使ってはいけません
 
-## テスト
+## Tests
 
-テストファイルは提供されません。
+`NaN.spec.ts`があるので参照してください。
+
+```
+yarn test
+```
