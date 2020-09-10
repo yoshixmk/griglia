@@ -1,4 +1,4 @@
-import { IVersion } from './IVersion.ts';
+import { IVersion } from './IVersion';
 
 export class SemVer implements IVersion<SemVer> {
   public static ofString(str: string): SemVer {
