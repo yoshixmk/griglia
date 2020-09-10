@@ -1,5 +1,7 @@
 # Functional switch
 
+## Not ready
+
 ```typescript
 switch (value) {
   case value1:
