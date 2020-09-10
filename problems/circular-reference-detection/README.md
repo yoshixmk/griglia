@@ -1,4 +1,4 @@
-# Recursive reference detection
+# Circular reference detection
 
 オブジェクトには循環参照という概念があります。
 
@@ -16,7 +16,7 @@ obj1.obj = obj2;
 
 ## Implementation
 
-ある`object`型の値が与えられたときにそれが循環参照をしているどうかを判定する関数`recursive()`を実装してください。
+ある`object`型の値が与えられたときにそれが循環参照をしているどうかを判定する関数`circular()`を実装してください。
 
 ## Concepts
 
