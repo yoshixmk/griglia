@@ -1,12 +1,21 @@
 # Griglia
 
-## Preparation
+## Requirement
 
-`Deno` required
+```
+> node -v       
+v14.5.0
 
-```Shell
-> deno --version  
-deno 1.3.1
-v8 8.6.334
-typescript 3.9.7
+> npm -v        
+6.14.5
+
+> yarn -v     
+1.22.5
+```
+
+## Initialization
+
+```
+yarn install
+yarn setup
 ```
