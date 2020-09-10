@@ -1,0 +1,29 @@
+{
+  "name": "@jaashita/griglia-object-equality",
+  "version": "1.0.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jamashita/griglia.git/problems/object-equality"
+  },
+  "license": "MIT",
+  "author": "jamashita <jamashita@arachnid.xyz>",
+  "scripts": {
+    "build": "yarn clean && tsc -p tsconfig.json",
+    "format": "eslint --fix 'src/**/*.{ts,tsx}'",
+    "test": "jest test",
+    "clean": "rimraf dist",
+    "update": "yarn update:upgrade && yarn update:install",
+    "update:install": "yarn install",
+    "update:upgrade": "ncu --upgrade --timeout 600000"
+  },
+  "engines": {
+    "node": ">= 14.5.0",
+    "npm": "npm is not supported"
+  },
+  "engineStrict": true,
+  "devDependencies": {
+    "jest": "26.4.2",
+    "sinon": "9.0.3"
+  }
+}
