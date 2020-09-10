@@ -1,5 +1,4 @@
-const obj1;
-describe('Recursive', () => {
+describe('Circular', () => {
   it('tests', async () => {
     expect.assertions(1);
   });

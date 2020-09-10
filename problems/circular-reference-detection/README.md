@@ -30,7 +30,7 @@ obj1.obj = obj2;
 
 ## Tests
 
-`Recursive.spec.ts`があるので参照してください。
+`Circular.spec.ts`があるので参照してください。
 
 ```
 yarn test
