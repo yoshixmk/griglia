@@ -1,18 +1,33 @@
-# Semantic Versioning
+# Semantic versioning
 
-セマンティックバージョニングというバージョン表記方法があります。
+`Semantic versioning`というバージョン表記方法があります。これは0と正の整数を3つ、`.`区切りで書いたものを指します。
 
-## `x.y.z`
+```
+x.y.z
+```
 
-`x, y, z` ともに `0` 以上の整数であれば `10.11.12` のような1ケタ以上の数値でも問題ありません。
+`x, y, z`ともに`0`以上の整数であれば`10.11.12`のような1ケタ以上の数値でも問題ありません。
 
-ここで `string` が与えられたときに、それをパースして `SemVer` というクラスを作るためのファクトリメソッド `SemVer.ofString()` を作成してください。
+## Implementation
 
-## 注意
+`string`が与えられたときに、それを解析して`SemVer`というクラスを作るためのファクトリメソッド`SemVerFactory.fromString()`を実装してください。  
+`SemVer`を実装してください
 
+## Concepts
+
+* 好ましくない`string`が与えられる可能性があるので例外処理を徹底してください
+* `SemVer`は他の`SemVer`と比較ができます
+    * `IVersion`がそのインターフェイスになので実装する必要があります
+
+## Conditions
+
+* 実装するクラス`SemVer`は`IVersion`を実装してください
 * 他のパッケージを使ってはいけません
-* 実装するクラス `SemVer` は同梱している `IVersion` を実装してください
 
-## テスト
+## Tests
 
-テストファイルは提供されません。
+`SemVerFactory.spec.ts`があるので参照してください。
+
+```
+yarn test
+```
