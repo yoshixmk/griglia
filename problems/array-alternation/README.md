@@ -5,9 +5,7 @@
 合成の方法は引数が`(arr1, arr2, arr3)`だった場合`arr1[0], arr2[0], arr3[0], arr1[1], arr2[1], arr3[2], ...`と合成します。  
 つまり、添字を統一して与えられたすべての配列の要素を取得します。 
 
-## Implementation
-
-以下の結果となる関数`alternate<<T>(...arrays: Array<Array<T>): Array<T>`を作ってください。
+## Example
 
 ```typescript
 alternate<number>(
@@ -67,9 +65,14 @@ alternate<number>(
 // -> [1, 4, 8, 5, 9, 6]
 ```
 
+## Implementation
+
+以上の結果となる関数`alternate<<T>(...arrays: Array<Array<T>): Array<T>`を作ってください。
+
 ## Concepts
 
 * 与えられた配列を縦に舐めることを意味しています
+* 配列が`undefined`を持っている場合があるので気をつけてください
 * 配列の長さは同じである必要がありません
     * 配列が他より短い場合はそれ以降その配列から値を取得されることはありません
 
@@ -77,6 +80,16 @@ alternate<number>(
 
 * 引数の配列を破壊してはいけません
 * 他のパッケージを使ってはいけません
+
+## Playground
+
+`src/playground.ts`があるので自由に記述して動作させてください。
+
+### Run playground
+
+```
+yarn play
+```
 
 ## Tests
 
