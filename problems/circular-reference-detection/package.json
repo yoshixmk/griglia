@@ -1,10 +1,10 @@
 {
-  "name": "@jaashita/griglia-recursive-reference-detection",
+  "name": "@jaashita/griglia-circular-reference-detection",
   "version": "1.0.0",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git@github.com:jamashita/griglia.git/problems/recursive-reference-detection"
+    "url": "git@github.com:jamashita/griglia.git/problems/circular-reference-detection"
   },
   "license": "MIT",
   "author": "jamashita <jamashita@arachnid.xyz>",
