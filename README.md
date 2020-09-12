@@ -19,3 +19,7 @@ v14.5.0
 yarn install
 yarn setup
 ```
+
+## License
+
+[MIT](LICENSE)
