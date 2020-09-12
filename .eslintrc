@@ -8,9 +8,20 @@
     "tsconfigRootDir": "."
   },
   "extends": [
-    "@jamashita/eslint-config",
-    "@jamashita/eslint-config/jest"
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
   ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "es2020": true
+  },
+  "globals": {
+    "NodeJS": false
+  },
   "rules": {
     "no-console": "warn"
   }
