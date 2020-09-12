@@ -5,6 +5,10 @@
 合成の方法は引数が`(arr1, arr2, arr3)`だった場合`arr1[0], arr2[0], arr3[0], arr1[1], arr2[1], arr3[2], ...`と合成します。  
 つまり、添字を統一して与えられたすべての配列の要素を取得します。 
 
+## Implementation
+
+以下の結果となる関数`alternate<<T>(...arrays: Array<Array<T>): Array<T>`を作ってください。
+
 ## Example
 
 ```typescript
@@ -64,10 +68,6 @@ alternate<number>(
 );
 // -> [1, 4, 8, 5, 9, 6]
 ```
-
-## Implementation
-
-以上の結果となる関数`alternate<<T>(...arrays: Array<Array<T>): Array<T>`を作ってください。
 
 ## Concepts
 
