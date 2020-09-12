@@ -21,4 +21,9 @@ describe('american', () => {
     expect(new AmericanNumeralSystem(1234.567).stringify())
       .toBe('1,234.567');
   });
+  it('stringify Minus', () => {
+    expect.assertions(1);
+    expect(new AmericanNumeralSystem(-1234.567).stringify())
+      .toBe('-1,234.567');
+  });
 });
