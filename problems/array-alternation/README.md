@@ -9,7 +9,7 @@
 
 以下の結果となる関数`alternate<<T>(...arrays: Array<Array<T>): Array<T>`を作ってください。
 
-## Example
+## Examples
 
 ```typescript
 alternate<number>(
