@@ -1,6 +1,6 @@
 # Numeral systems
 
-数字を羅列するだけでは何桁かがわかりにくいため、数字を区切って出力する`NumeralSystem.ts`を実装します。
+数字を区切って表示します。
 
 日本国ではアメリカ合衆国形式に倣い、数字を(特に金額を)表記するときは3桁ごとに`,`を挿入します。これは整数部のみで、もしそれが小数部を持っていたとしても小数部にはこれを適用しません。
 
@@ -8,23 +8,51 @@
 
 ### 米国方式
 
-* 123,456,789
-* 1,234.56789
+* `123,456,789`
+* `1,234.56789`
 
 ### 欧州方式
 
-* 123.456.789
-* 1.234,56789
+* `123.456.789`
+* `1.234,56789`
 
 ### インド方式
 
-* 12,34,56,789
-* 1,234.56789
+* `12,34,56,789`
+* `1,234.56789`
 
 ## Implementation
 
 インターフェイスの`NumeralSystem`を実装してください。  
 以下の条件をできるだけ多く満たしてください。
+
+## Examples
+
+どのように処理するかのすべてが問題になっているので、以下の例は曖昧に書かれています。
+
+```typescript
+const value1: NumericalValue = [*NumeralSystem*].xxx(1_000_000);
+const value2: NumericalValue = [*NumeralSystem*].xxx(1_000_000);
+const value3: NumericalValue = [*NumeralSystem*].xxx(1_000_000);
+
+console.log(value1.serialize());
+// 1,000,000
+console.log(value2.serialize());
+// 1.000.000
+console.log(value3.serialize());
+// 10,00,000
+
+const value4: NumericalValue = [*NumeralSystem*].yyy('1,000,000');
+const value5: NumericalValue = [*NumeralSystem*].yyy('1.000.000');
+const value6: NumericalValue = [*NumeralSystem*].yyy('10,00,000');
+
+console.log(value4.serialize());
+// 1,000,000
+console.log(value5.serialize());
+// 1.000.000
+console.log(value6.serialize());
+// 10,00,000
+```
 
 ## Concepts
 
@@ -37,20 +65,20 @@
     * 欧州方式 (区切り文字: `.` 小数点: `,`) = 米国方式と逆
         * 3桁ごとに区切る
     * インド方式 (区切り文字; `,` 小数点: `.`)
-        初めは3桁で、それ以降は2桁以降で区切る
+        * 1000までは3桁、それ以降は2桁以降で区切る
 1. 他の方式に変換できる
     * インターフェイスの`NumeralSystem`にこのメソッドを追加して実装してください
 1. 四則計算できる
 1. 金額として表示できる
     * 先頭に金額の種類の記号が付与できる
-        * ¥1,000
-        * $10.00
+        * `¥1,000`
+        * `$10.00`
     * 金額が負の値になる時は、負の記号を先頭に表示し、金額の記号をその次に表示できる
-        * -¥1,000
-        * -$10.00
+        * `-¥1,000`
+        * `-$10.00`
         * 以下は正しくないとする
-            * ¥-1,000
-            * $-10.00
+            * `¥-1,000`
+            * `$-10.00`
 
 ## Conditions
 
@@ -59,6 +87,16 @@
 * すべてを実装する必要はありません
     * できるだけ上から実装してください
 * 他のパッケージを使ってはいけません
+
+## Playground
+
+`src/playground.ts`があるので自由に記述して動作させてください。
+
+### Run playground
+
+```
+yarn play
+```
 
 ## Tests
 

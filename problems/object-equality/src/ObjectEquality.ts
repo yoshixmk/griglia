@@ -1,10 +1,11 @@
 type Primitive = undefined | null | boolean | number | string;
-type PlainObject = Readonly<{
-  [key: string]: Value;
-}>;
-type Value = Primitive | PlainObject | ArrayLike<Value>;
+type PlainObject = {
+  [key: string]: PlainObjectItem;
+};
+type ObjectLiteral = PlainObject | ReadonlyArray<PlainObjectItem>;
+type PlainObjectItem = Primitive | ObjectLiteral;
 
-export const equal = (v1: Value, v2: Value): boolean => {
+export const same = (v1: ObjectLiteral, v2: ObjectLiteral): boolean => {
   // TODO
   console.log(v1);
   console.log(v2);

@@ -1,11 +1,10 @@
 import sinon, { SinonSpy } from 'sinon';
-import { AwesomeCollection, Cancel } from '../AwesomeCollection';
+import { AwesomeCollection } from '../AwesomeCollection';
+import { Cancel, CancelableForEach } from '../CancelableForEach';
 
-describe('AwesomeCollection', () => {
+describe('CancelableForEach', () => {
   it('tests', () => {
-    expect.assertions(1);
-
-    const collection: AwesomeCollection<string | Error> = new AwesomeCollection<string | Error>(
+    const collection: CancelableForEach<unknown> = new AwesomeCollection(
       'alpha',
       'bravo',
       'charlie',
@@ -17,7 +16,7 @@ describe('AwesomeCollection', () => {
 
     const spy: SinonSpy = sinon.spy();
 
-    collection.forEach((v: string | Error, cancel: Cancel) => {
+    collection.forEach((v: unknown, cancel: Cancel) => {
       if (v instanceof Error) {
         cancel();
 
