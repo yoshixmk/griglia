@@ -14,7 +14,7 @@ collection.forEach((v: V) => {
 
 新しくコレクション`AwesomeCollection`を実装するとして、この`forEach()`を途中でキャンセルできるように実装してください。
 
-## Example
+## Examples
 
 以下はエラーが含まれる配列で、エラーを検知したときに`forEach()`を停止させる例です。  
 `AwesomeCollection`のコンストラクタはこのとおりである必要はありません。
