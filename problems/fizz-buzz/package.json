@@ -4,7 +4,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git@github.com:jamashita/griglia.git/problems/semantic-versioning"
+    "url": "git@github.com:jamashita/griglia.git/problems/fizz-buzz"
   },
   "license": "MIT",
   "author": "jamashita <jamashita@arachnid.xyz>",
