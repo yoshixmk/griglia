@@ -25,7 +25,7 @@
     1. それ以外のときはその数字を表示
 * 複数の条件が満たされる場合は上から半角空白で空けて表示してください
     * すべての条件が満たされていれば、表示はこのようになります
-        * `Fizz Dazz Buzz Jazz Primezz`
+        * `Fizz Dazz Buzz Jazz Primezz 10` (実際には起こりません)
 
 ## Conditions
 
