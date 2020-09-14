@@ -4,8 +4,6 @@ import { Cancel, CancelableForEach } from '../CancelableForEach';
 
 describe('CancelableForEach', () => {
   it('tests', () => {
-    expect.assertions(1);
-
     const collection: CancelableForEach<unknown> = new AwesomeCollection(
       'alpha',
       'bravo',
