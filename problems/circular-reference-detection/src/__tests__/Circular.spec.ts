@@ -3,8 +3,6 @@ import { circular } from '../Circular';
 
 describe('Circular', () => {
   it('tests', () => {
-    expect.assertions(14);
-
     expect(circular({})).toBe(false);
     expect(circular({
       o: {}
