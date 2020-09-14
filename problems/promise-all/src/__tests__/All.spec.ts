@@ -10,8 +10,6 @@ const wait = <T>(ret: T, delay: number): Promise<T> => {
 
 describe('All', () => {
   it('tests', async () => {
-    expect.assertions(3);
-
     await expect(all<unknown>([])).resolves.toStrictEqual([]);
     await expect(all<unknown>([Promise.resolve<unknown>(5)])).resolves.toStrictEqual([5]);
     await expect(all<unknown>([
@@ -21,5 +19,5 @@ describe('All', () => {
       wait<unknown>(4, 500),
       wait<unknown>(5, 0)
     ])).resolves.toStrictEqual([1, 2, 3, 4, 5]);
-  }, 5000);
+  }, 300);
 });
