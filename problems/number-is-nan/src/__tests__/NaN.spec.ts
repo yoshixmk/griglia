@@ -5,7 +5,7 @@ describe('nan', () => {
     expect(nan(undefined)).toBe(false);
     expect(nan(null)).toBe(false);
     expect(nan(false)).toBe(false);
-    expect(nan(false)).toBe(false);
+    expect(nan(true)).toBe(false);
     expect(nan(1)).toBe(false);
     expect(nan(0)).toBe(false);
     expect(nan(-0)).toBe(false);
