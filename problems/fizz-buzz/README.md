@@ -45,7 +45,7 @@ yarn play
 
 ## Tests
 
-`SemVerFactory.spec.ts`があるので参照してください。
+`FizzBuzz.spec.ts`があるので参照してください。
 
 ```
 yarn test
