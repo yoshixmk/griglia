@@ -1,10 +1,10 @@
 {
-  "name": "@jaashita/griglia-fizz-buzz",
+  "name": "@jaashita/griglia-pagination",
   "version": "1.0.0",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git@github.com:jamashita/griglia.git/problems/fizz-buzz"
+    "url": "git@github.com:jamashita/griglia.git/problems/pagination"
   },
   "license": "MIT",
   "author": "jamashita <jamashita@arachnid.xyz>",
