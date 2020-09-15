@@ -35,23 +35,23 @@ const value1: NumericalValue = [*NumeralSystem*].xxx(1_000_000);
 const value2: NumericalValue = [*NumeralSystem*].xxx(1_000_000);
 const value3: NumericalValue = [*NumeralSystem*].xxx(1_000_000);
 
-console.log(value1.serialize());
-// 1,000,000
-console.log(value2.serialize());
-// 1.000.000
-console.log(value3.serialize());
-// 10,00,000
+value1.serialize();
+// -> '1,000,000'
+value2.serialize();
+// -> '1.000.000'
+value3.serialize();
+// -> '10,00,000'
 
 const value4: NumericalValue = [*NumeralSystem*].yyy('1,000,000');
 const value5: NumericalValue = [*NumeralSystem*].yyy('1.000.000');
 const value6: NumericalValue = [*NumeralSystem*].yyy('10,00,000');
 
-console.log(value4.serialize());
-// 1,000,000
-console.log(value5.serialize());
-// 1.000.000
-console.log(value6.serialize());
-// 10,00,000
+value4.serialize();
+// -> '1,000,000'
+value5.serialize();
+// -> '1.000.000'
+value6.serialize();
+// -> '10,00,000'
 ```
 
 ## Concepts

@@ -12,35 +12,35 @@ TypeScriptの`number`型には`NaN`という値があります。
 
 ```typescript
 nan(undefined);
-// false
+// -> false
 nan(null);
-// false
+// -> false
 nan(true);
-// false
+// -> false
 nan(1);
-// false
+// -> false
 nan(-0);
-// false
+// -> false
 nan(-1);
-// false
+// -> false
 nan(-1.01);
-// false
+// -> false
 nan(Infinity);
-// false
+// -> false
 nan(-Infinity);
-// false
+// -> false
 nan(NaN);
-// true
+// -> true
 nan('');
-// false
+// -> false
 nan('i');
-// false
+// -> false
 nan(Symbol());
-// false
+// -> false
 nan(0n);
-// false
+// -> false
 nan({});
-// false
+// -> false
 ```
 
 ## Concepts
