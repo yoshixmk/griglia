@@ -9,6 +9,8 @@
 
 以下の結果となる関数`alternate<<T>(...arrays: Array<Array<T>): Array<T>`を作ってください。
 
+## Examples
+
 ```typescript
 alternate<number>(
   [1, 3, 5]
@@ -70,13 +72,25 @@ alternate<number>(
 ## Concepts
 
 * 与えられた配列を縦に舐めることを意味しています
+* 配列が`undefined`を持っている場合があります
+    * コーディング次第では気をつけてください
 * 配列の長さは同じである必要がありません
-    * 配列が他より短い場合はそれ以降その配列から値を取得されることはありません
+    * 配列が他より短い場合はそれ以降その配列から値を取得することはありません
 
 ## Conditions
 
 * 引数の配列を破壊してはいけません
 * 他のパッケージを使ってはいけません
+
+## Playground
+
+`src/playground.ts`があるので自由に記述して動作させてください。
+
+### Run playground
+
+```
+yarn play
+```
 
 ## Tests
 

@@ -12,9 +12,12 @@ collection.forEach((v: V) => {
 
 ## Implementation
 
-新しくコレクション`AwesomeCollection`を作っているとして、この`forEach()`を途中でキャンセルできるように実装してください。
+新しくコレクション`AwesomeCollection`を実装するとして、この`forEach()`を途中でキャンセルできるように実装してください。
 
-以下のコンストラクタは一例です。実際はこのとおりに実装する必要はありません。
+## Examples
+
+以下はエラーが含まれる配列で、エラーを検知したときに`forEach()`を停止させる例です。  
+`AwesomeCollection`のコンストラクタはこのとおりである必要はありません。
 
 ```typescript
 const collection: AwesomeCollection<string | Error> = new AwesomeCollection<string | Error>([
@@ -46,11 +49,22 @@ collection.forEach((v: string, cancel: Cancel) => {
 
 ## Conditions
 
+* Type aliasの`Cancel`は便宜的なもので、変更してもかまいません
 * 他のパッケージを使ってはいけません
+
+## Playground
+
+`src/playground`があるので自由に記述して動作させてください。
+
+### Run playground
+
+```
+yarn play
+```
 
 ## Tests
 
-`AwesomeCollection.spec.ts`があるので参照してください。
+`CancelableForEach.spec.ts`があるので参照してください。
 
 ```
 yarn test

@@ -111,10 +111,10 @@ sw(MONDAY)
   });
 
 // ->
-// 'MONDAY'
-// 'TUESDAY'
-// 'WEDNESDAY'
-// 'THURSDAY'
+//  'MONDAY'
+//  'TUESDAY'
+//  'WEDNESDAY'
+//  'THURSDAY'
 ```
 
 #### `the same CONSTANT_VALUE`
@@ -167,7 +167,7 @@ sw(THURSDAY)
   });
 
 // ->
-// 'THURSDAY AND FRIDAY'
+//  'THURSDAY AND FRIDAY'
 ```
 
 #### `Promise` is applicable
@@ -206,15 +206,14 @@ sw(THURSDAY)
     console.log('SATURDAY');
   });
 
-// ->
 // 10 seconds
-// 'THURSDAY'
+//  -> 'THURSDAY'
 // 5 seconds
-// 'FRIDAY'
+//  -> 'FRIDAY'
 // immediately
-// 'SATURDAY'
+//  -> 'SATURDAY'
 // immediately
-// 'SUNDAY'
+//  -> 'SUNDAY'
 ```
 
 ## 注意
