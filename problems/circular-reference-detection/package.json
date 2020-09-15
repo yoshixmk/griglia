@@ -19,8 +19,7 @@
     "update:upgrade": "ncu --upgrade --timeout 600000"
   },
   "devDependencies": {
-    "jest": "26.4.2",
-    "sinon": "9.0.3"
+    "jest": "26.4.2"
   },
   "engines": {
     "node": ">= 14.5.0",
