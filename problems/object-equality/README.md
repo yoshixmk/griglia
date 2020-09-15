@@ -12,26 +12,26 @@
 
 ```typescript
 1 === 1
-// true
+// -> true
 true === true
-// true
+// -> true
 'candy' ==== 'candy'
-// true
+// -> true
 ```
 
 一方、リファレンス型はオブジェクトそのものが同じものでない限りたとえ同じキーとプロパティのペアでも等値比較は`false`になります。
 
 ```typescript
 {} === {}
-// false
+// -> false
 {
   kangaroo: 'australia'
 } === {
   kangaroo: 'australia'
 }
-// false
+// -> false
 [] === []
-// false
+// -> false
 ```
 
 ## Concepts
