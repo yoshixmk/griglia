@@ -15,6 +15,7 @@
   "scripts": {
     "build": "lerna run --parallel build",
     "clean": "lerna run --parallel clean",
+    "commit": "git cz",
     "format": "eslint --fix 'problems/*/src/**/*.{ts,tsx}'",
     "reset": "lerna clean",
     "setup": "lerna bootstrap && lerna link",
@@ -24,6 +25,8 @@
     "update:upgrade": "ncu --upgrade --timeout 600000 && lerna run --parallel update:upgrade"
   },
   "devDependencies": {
+    "@commitlint/cli": "11.0.0",
+    "@commitlint/config-conventional": "11.0.0",
     "@jamashita/eslint-config": "1.1.5",
     "@types/jest": "26.0.14",
     "@types/node": "14.11.1",
@@ -34,6 +37,7 @@
     "eslint": "7.9.0",
     "eslint-plugin-import": "2.22.0",
     "eslint-plugin-jest": "24.0.1",
+    "git-cz": "4.7.1",
     "husky": "4.3.0",
     "jest": "26.4.2",
     "lerna": "3.22.1",
