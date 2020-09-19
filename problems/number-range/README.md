@@ -85,11 +85,12 @@
 
 ## Examples
 
-どのように処理するかのすべてが問題になっているので、以下の例は曖昧に書かれています。
+以下の例ではコンストラクタは曖昧に書かれています。
 
 ```typescript
 const range: NumberRange = [*NumberRange*].xxx('- 5, 9');
 
+// isValid()
 range.isValid(3);
 // true
 range.isValid(4);
@@ -106,29 +107,57 @@ range.isValid(9);
 // true
 range.isValid(10);
 // false
+
+// add()
+range.add(6);
+range.serialize();
+// - 6, 9
+range.add(8);
+range.serialize();
+// - 6, 8, 9
+range.add(10);
+range.serialize();
+// - 6, 8 - 10
+range.add(7);
+range.serialize();
+// - 10
+
+// remove()
+range.remove(7);
+range.serialize();
+// - 6, 8 - 10
+range.remove(10);
+range.serialize();
+// - 6, 8, 9
+range.remove(8);
+range.serialize();
+// - 6, 9
+range.add(6);
+range.serialize();
+// - 5, 9
 ```
 
 ## Concepts
 
 1. 値は`0`以上の`20`以下の整数を考えます
+    * 下限値と上限値は変更できるようにし、magic numberの使用を避けてください
     * 好ましくない`number`に対するvalidationをしてください
         * `0`未満の値、`20`超過の値
         * 小数部を含む値
+        * `NaN`
     * 上限を表す`- X`は範囲の`0 - X`と考えてください
     * 下限を表す`X -`は範囲の`X - 20`と考えてください
 1. 文字列が与えられたときに、それをそのデータ構造に変換するためのファクトリメソッドを定義してください
 1. あるnumber型の引数を受けてその値が数値表現と適合するかを判定できるメソッド`isValid()`を定義してください
 1. 新しく数値表現を追加できるメソッド`add()`を実装してください
-    * インターフェイスの`NumberRange`にこのメソッドを追加して実装してください
 1. 新しく数値表現を削除できるメソッド`remove()`を実装してください
-    * インターフェイスの`NumberRange`にこのメソッドを追加して実装してください
-1. これを保存するためのデータ構造を考えてください
-    * データ構造を保存したあと、ふたたび復元するためのファクトリメソッドを定義してください
-1. (advanced) `add(), remove()`によって数値表現を変更できます
+1. `add(), remove()`によって数値表現を変更できるようにしてください
     * `- 7, 9`に`8`を追加すると`- 9`になります
-1. (advanced) 1値は3値連続すると範囲に変わります
+1. 1値は3値連続すると範囲に変わるようにしてください
     * 1値を追加する想像図は以下です
         * `4` -> `4, 5` -> `4 - 6`
+    * 連続する範囲が`remove()`によって取り除かれた場合は表記を1値に戻してください
+        * `1 - 5` -> `1, 2, 4, 5`
 
 ## Conditions
 
