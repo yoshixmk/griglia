@@ -1,12 +1,12 @@
 {
-  "name": "@jamashita/griglia",
+  "name": "@tegebu/griglia",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git@github.com:jamashita/griglia.git"
+    "url": "git@github.com:tegebu/griglia.git"
   },
   "license": "MIT",
-  "author": "jamashita <jamashita@arachnid.xyz>",
+  "author": "tegebu <info@tegebu.com>",
   "workspaces": {
     "packages": [
       "problems/*"

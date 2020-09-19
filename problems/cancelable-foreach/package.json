@@ -1,13 +1,13 @@
 {
-  "name": "@jaashita/griglia-cancellable-foreach",
+  "name": "@tegebu/griglia-cancellable-foreach",
   "version": "1.0.0",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git@github.com:jamashita/griglia.git/problems/cancellable-foreach"
+    "url": "git@github.com:tegebu/griglia.git/problems/cancellable-foreach"
   },
   "license": "MIT",
-  "author": "jamashita <jamashita@arachnid.xyz>",
+  "author": "tegebu <info@tegebu.com>",
   "scripts": {
     "build": "yarn clean && tsc -p tsconfig.json",
     "clean": "rimraf dist",
