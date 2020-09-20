@@ -164,6 +164,12 @@ range.serialize();
     * できるだけ上から実装してください
 * 他のパッケージを使ってはいけません
 
+### Run playground
+
+```
+yarn play
+```
+
 ## Tests
 
 テストファイルは提供されません。
