@@ -85,7 +85,7 @@
 
 ## Examples
 
-以下の例ではインスタンス生成のためのファクトリあるいはは曖昧に書かれています。
+以下の例ではインスタンス生成のためのファクトリは曖昧に書かれています。
 
 ```typescript
 const range: NumberRange = [*NumberRange*].xxx('- 5, 9');
@@ -132,7 +132,7 @@ range.serialize();
 range.remove(8);
 range.serialize();
 // - 6, 9
-range.add(6);
+range.remove(6);
 range.serialize();
 // - 5, 9
 ```
@@ -155,6 +155,7 @@ range.serialize();
 1. 1値は3値連続すると範囲に変わるようにしてください
     * 1値を追加する想像図は以下です
         * `4` -> `4, 5` -> `4 - 6`
+        * `0` -> `0, 1` -> `- 2`
     * 連続する範囲が`remove()`によって取り除かれた場合は表記を離散(複合)に戻してください
         * `1 - 5` -> `1, 2, 4, 5`
 
