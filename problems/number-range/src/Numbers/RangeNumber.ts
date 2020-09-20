@@ -1,4 +1,4 @@
-import { RangeElement } from './RangeElement';
+import { RangeElement } from '../RangeElement';
 
 export class RangeNumber implements RangeElement {
   private readonly min: number;
@@ -17,7 +17,7 @@ export class RangeNumber implements RangeElement {
     this.max = max;
   }
 
-  public isValid(num: number): boolean {
+  public contains(num: number): boolean {
     if (this.min > num) {
       return false;
     }
@@ -28,9 +28,21 @@ export class RangeNumber implements RangeElement {
     return true;
   }
 
+  public ready(num: number): boolean {
+    if (this.min - 1 === num) {
+      return true;
+    }
+    if (this.max + 1 === num) {
+      return true;
+    }
+
+    return false;
+  }
+
+
   public add(num: number): RangeElement {
-    if (this.isValid(num)) {
-      return this;
+    if (!this.ready(num)) {
+      throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS NUMBER: ${num}`);
     }
 
     if (this.min - 1 === num) {
@@ -44,7 +56,7 @@ export class RangeNumber implements RangeElement {
   }
 
   public remove(num: number): RangeElement {
-    if (!this.isValid(num)) {
+    if (!this.contains(num)) {
       throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS NUMBER: ${num}`);
     }
 

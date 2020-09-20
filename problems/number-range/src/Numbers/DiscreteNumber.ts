@@ -1,4 +1,4 @@
-import { RangeElement } from './RangeElement';
+import { RangeElement } from '../RangeElement';
 
 export class DiscreteNumber implements RangeElement {
   private readonly nums: Array<number>;
@@ -11,17 +11,17 @@ export class DiscreteNumber implements RangeElement {
     this.nums = nums;
   }
 
-  public isValid(num: number): boolean {
+  public contains(num: number): boolean {
     return this.nums.some((n: number) => {
       return n === num;
     });
   }
 
-  public add(num: number): RangeElement {
-    if (this.isValid(num)) {
-      return this;
-    }
+  public ready(): boolean {
+    return true;
+  }
 
+  public add(num: number): RangeElement {
     const nums: Array<number> = [...this.nums, num];
     nums.sort((n1: number, n2: number) => {
       return n1 - n2;
@@ -38,6 +38,10 @@ export class DiscreteNumber implements RangeElement {
   }
 
   public remove(num: number): RangeElement {
+    if (!this.contains(num)) {
+      throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS NUMBER: ${num}`);
+    }
+
     const nums: Array<number> = this.nums.filter((n: number) => {
       return n === num;
     });

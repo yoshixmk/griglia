@@ -1,5 +1,5 @@
-import { DiscreteNumber } from '../DiscreteNumber';
 import { RangeElement } from '../RangeElement';
+import { DiscreteNumber } from './DiscreteNumber';
 import { NoNumber } from './NoNumber';
 
 export class UniqueNumber implements RangeElement {

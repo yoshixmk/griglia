@@ -15,6 +15,10 @@ export class NoNumber implements RangeElement {
     return false;
   }
 
+  public ready(): boolean {
+    return false;
+  }
+
   public add(num: number): RangeElement {
     throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS NUMBER: ${num}`);
   }
@@ -29,9 +33,5 @@ export class NoNumber implements RangeElement {
 
   public equals(other: RangeElement): boolean {
     return this === other;
-  }
-
-  public ready(): boolean {
-    return false;
   }
 }

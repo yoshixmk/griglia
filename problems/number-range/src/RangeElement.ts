@@ -1,5 +1,7 @@
 export interface RangeElement {
-  isValid(num: number): boolean;
+  contains(num: number): boolean;
+
+  ready(num: number): boolean;
 
   add(num: number): RangeElement;
 
