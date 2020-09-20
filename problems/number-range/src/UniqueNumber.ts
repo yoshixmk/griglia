@@ -1,3 +1,4 @@
+import { DiscreteNumber } from './DiscreteNumber';
 import { NoNumber } from './NoNumber';
 import { RangeElement } from './RangeElement';
 
@@ -17,8 +18,17 @@ export class UniqueNumber implements RangeElement {
   }
 
   public add(num: number): RangeElement {
-    // TODO
-    // return
+    if (this.num === num) {
+      return this;
+    }
+
+    const arr: Array<number> = [this.num, num];
+
+    arr.sort((n1: number, n2: number) => {
+      return n1 - n2;
+    });
+
+    return DiscreteNumber.of(arr);
   }
 
   public remove(num: number): RangeElement {
@@ -30,6 +40,6 @@ export class UniqueNumber implements RangeElement {
   }
 
   public serialize(): string {
-    return '';
+    return `${this.num}`;
   }
 }
