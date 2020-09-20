@@ -1,12 +1,12 @@
 {
-  "name": "@jamashita/griglia",
+  "name": "@tegebu/griglia",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git@github.com:jamashita/griglia.git"
+    "url": "git@github.com:tegebu/griglia.git"
   },
   "license": "MIT",
-  "author": "jamashita <jamashita@arachnid.xyz>",
+  "author": "tegebu <info@tegebu.com>",
   "workspaces": {
     "packages": [
       "problems/*"
@@ -15,6 +15,7 @@
   "scripts": {
     "build": "lerna run --parallel build",
     "clean": "lerna run --parallel clean",
+    "commit": "git cz",
     "format": "eslint --fix 'problems/*/src/**/*.{ts,tsx}'",
     "reset": "lerna clean",
     "setup": "lerna bootstrap && lerna link",
@@ -24,27 +25,30 @@
     "update:upgrade": "ncu --upgrade --timeout 600000 && lerna run --parallel update:upgrade"
   },
   "devDependencies": {
-    "@jamashita/eslint-config": "1.1.3",
-    "@types/jest": "26.0.13",
-    "@types/node": "14.10.1",
+    "@commitlint/cli": "11.0.0",
+    "@commitlint/config-conventional": "11.0.0",
+    "@jamashita/eslint-config": "1.1.5",
+    "@types/jest": "26.0.14",
+    "@types/node": "14.11.1",
     "@types/sinon": "9.0.5",
-    "@typescript-eslint/eslint-plugin": "4.1.0",
-    "@typescript-eslint/parser": "4.1.0",
-    "@typescript-eslint/typescript-estree": "4.1.0",
-    "eslint": "7.8.1",
+    "@typescript-eslint/eslint-plugin": "4.1.1",
+    "@typescript-eslint/parser": "4.1.1",
+    "@typescript-eslint/typescript-estree": "4.1.1",
+    "eslint": "7.9.0",
     "eslint-plugin-import": "2.22.0",
-    "eslint-plugin-jest": "24.0.0",
+    "eslint-plugin-jest": "24.0.1",
+    "git-cz": "4.7.1",
     "husky": "4.3.0",
     "jest": "26.4.2",
     "lerna": "3.22.1",
-    "lint-staged": "10.3.0",
+    "lint-staged": "10.4.0",
     "npm-check-updates": "9.0.1",
     "rimraf": "3.0.2",
     "sinon": "9.0.3",
-    "sort-package-json": "1.44.0",
+    "sort-package-json": "1.46.0",
     "ts-jest": "26.3.0",
     "ts-node": "9.0.0",
-    "typescript": "4.0.2"
+    "typescript": "4.0.3"
   },
   "engines": {
     "node": ">= 14.5.0",

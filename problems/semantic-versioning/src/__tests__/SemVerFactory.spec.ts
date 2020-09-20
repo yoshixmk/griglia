@@ -3,8 +3,6 @@ import { SemVerFactory } from '../SemVerFactory';
 
 describe('SemVerFactory', () => {
   it('tests', () => {
-    expect.assertions(70);
-
     const factory: SemVerFactory = new SemVerFactory();
 
     expect(() => {

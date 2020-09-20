@@ -10,8 +10,8 @@ x.y.z
 
 ## Implementation
 
-`string`が与えられたときに、それを解析して`SemVer`というクラスを作るためのファクトリメソッド`SemVerFactory.fromString()`を実装してください。  
-`SemVer`を実装してください
+`string`型の値が与えられたときに、それを解析して`SemVer`というクラスを作るためのファクトリ`SemVerFactory`を実装してください。  
+また、そのインスタンスの`SemVer`を実装してください。
 
 ## Concepts
 
@@ -23,6 +23,16 @@ x.y.z
 
 * 実装するクラス`SemVer`は`IVersion`を実装してください
 * 他のパッケージを使ってはいけません
+
+## Playground
+
+`src/playground.ts`があるので自由に記述して動作させてください。
+
+### Run playground
+
+```
+yarn play
+```
 
 ## Tests
 

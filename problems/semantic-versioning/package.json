@@ -1,29 +1,29 @@
 {
-  "name": "@jaashita/griglia-semantic-versioning",
+  "name": "@tegebu/griglia-semantic-versioning",
   "version": "1.0.0",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git@github.com:jamashita/griglia.git/problems/semantic-versioning"
+    "url": "git@github.com:tegebu/griglia.git/problems/semantic-versioning"
   },
   "license": "MIT",
-  "author": "jamashita <jamashita@arachnid.xyz>",
+  "author": "tegebu <info@tegebu.com>",
   "scripts": {
-    "test": "jest test",
     "build": "yarn clean && tsc -p tsconfig.json",
     "clean": "rimraf dist",
     "format": "eslint --fix 'src/**/*.{ts,tsx}'",
+    "play": "ts-node src/playground.ts",
+    "test": "jest test",
     "update": "yarn update:upgrade && yarn update:install",
     "update:install": "yarn install",
     "update:upgrade": "ncu --upgrade --timeout 600000"
+  },
+  "devDependencies": {
+    "jest": "26.4.2"
   },
   "engines": {
     "node": ">= 14.5.0",
     "npm": "npm is not supported"
   },
-  "engineStrict": true,
-  "devDependencies": {
-    "jest": "26.4.2",
-    "sinon": "9.0.3"
-  }
+  "engineStrict": true
 }
