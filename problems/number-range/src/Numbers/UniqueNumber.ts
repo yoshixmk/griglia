@@ -1,6 +1,6 @@
-import { DiscreteNumber } from './DiscreteNumber';
+import { DiscreteNumber } from '../DiscreteNumber';
+import { RangeElement } from '../RangeElement';
 import { NoNumber } from './NoNumber';
-import { RangeElement } from './RangeElement';
 
 export class UniqueNumber implements RangeElement {
   private readonly num: number;
@@ -13,13 +13,24 @@ export class UniqueNumber implements RangeElement {
     this.num = num;
   }
 
-  public isValid(num: number): boolean {
+  public contains(num: number): boolean {
     return this.num === num;
   }
 
+  public ready(num: number): boolean {
+    if (this.num + 1 === num) {
+      return true;
+    }
+    if (num + 1 === this.num) {
+      return true;
+    }
+
+    return false;
+  }
+
   public add(num: number): RangeElement {
-    if (this.isValid(num)) {
-      return this;
+    if (!this.ready(num)) {
+      throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS NUMBER: ${num}`);
     }
 
     if (this.num + 1 === num) {
@@ -29,15 +40,15 @@ export class UniqueNumber implements RangeElement {
       return DiscreteNumber.of([num, this.num]);
     }
 
-    throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS NUMBER: ${num}`);
+    return this;
   }
 
   public remove(num: number): RangeElement {
-    if (!this.isValid(num)) {
-      throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS NUMBER: ${num}`);
+    if (this.contains(num)) {
+      return NoNumber.of();
     }
 
-    return NoNumber.of();
+    throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS NUMBER: ${num}`);
   }
 
   public serialize(): string {

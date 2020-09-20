@@ -1,4 +1,4 @@
-import { RangeElement } from './RangeElement';
+import { RangeElement } from '../RangeElement';
 
 export class NoNumber implements RangeElement {
   private static readonly INSTANCE: NoNumber = new NoNumber();
@@ -11,7 +11,7 @@ export class NoNumber implements RangeElement {
     // NOOP
   }
 
-  public isValid(): boolean {
+  public contains(): boolean {
     return false;
   }
 
@@ -29,5 +29,9 @@ export class NoNumber implements RangeElement {
 
   public equals(other: RangeElement): boolean {
     return this === other;
+  }
+
+  public ready(): boolean {
+    return false;
   }
 }
