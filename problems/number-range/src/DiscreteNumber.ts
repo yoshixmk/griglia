@@ -1,6 +1,4 @@
-import { NoNumber } from './NoNumber';
 import { RangeElement } from './RangeElement';
-import { UniqueNumber } from './UniqueNumber';
 
 export class DiscreteNumber implements RangeElement {
   private readonly nums: Array<number>;
@@ -14,39 +12,60 @@ export class DiscreteNumber implements RangeElement {
   }
 
   public isValid(num: number): boolean {
-    return this.nums.includes(num);
+    return this.nums.some((n: number) => {
+      return n === num;
+    });
   }
 
   public add(num: number): RangeElement {
-    const nums: Array<number> = [...this.nums];
+    if (this.isValid(num)) {
+      return this;
+    }
 
-    nums.push(num);
-    nums.sort((n1, n2) => {
+    const nums: Array<number> = [...this.nums, num];
+    nums.sort((n1: number, n2: number) => {
       return n1 - n2;
     });
+
+    if (nums.length <= 2) {
+      return DiscreteNumber.of(nums);
+    }
+    if (this.iss()) {
+      // TODO RISNAchI?
+    }
 
     return DiscreteNumber.of(nums);
   }
 
   public remove(num: number): RangeElement {
-    const filtered: Array<number> = this.nums.filter((n: number) => {
-      return num !== n;
+    const nums: Array<number> = this.nums.filter((n: number) => {
+      return n === num;
     });
 
-    switch (filtered.length) {
-      case 0: {
-        return NoNumber.of();
-      }
-      case 1: {
-        return UniqueNumber.of(filtered[0]);
-      }
-      default: {
-        return DiscreteNumber.of(filtered);
-      }
-    }
+    // TODO RISANCHI
+    return DiscreteNumber.of(nums);
   }
 
   public serialize(): string {
-    return this.nums.join(', ');
+    return this.nums.map<string>((n: number) => {
+      return `${n}`;
+    }).join(', ');
+  }
+
+  public equals(other: RangeElement): boolean {
+    if (this === other) {
+      return true;
+    }
+    if (other instanceof DiscreteNumber) {
+      return this.nums.every((n: number, i: number) => {
+        return n === other.nums[i];
+      });
+    }
+
+    return false;
+  }
+
+  private iss(): boolean {
+    //
   }
 }
