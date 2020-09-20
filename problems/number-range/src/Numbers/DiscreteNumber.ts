@@ -1,4 +1,7 @@
 import { RangeElement } from '../RangeElement';
+import { ComplexNumber } from './ComplexNumber';
+import { NoNumber } from './NoNumber';
+import { UniqueNumber } from './UniqueNumber';
 
 export class DiscreteNumber implements RangeElement {
   private readonly nums: Array<number>;
@@ -23,6 +26,7 @@ export class DiscreteNumber implements RangeElement {
 
   public add(num: number): RangeElement {
     const nums: Array<number> = [...this.nums, num];
+
     nums.sort((n1: number, n2: number) => {
       return n1 - n2;
     });
@@ -30,16 +34,28 @@ export class DiscreteNumber implements RangeElement {
     if (nums.length <= 2) {
       return DiscreteNumber.of(nums);
     }
-    if (this.iss()) {
-      // TODO RISNAchI?
-    }
 
-    return DiscreteNumber.of(nums);
+    const groups: Array<Array<number>> = this.classify();
+    const ranges: Array<RangeElement> = groups.map<RangeElement>((g: Array<number>) => {
+      switch (g.length) {
+        case 0: {
+          return NoNumber.of();
+        }
+        case 1: {
+          return UniqueNumber.of(g[0]);
+        }
+        default: {
+          return DiscreteNumber.of(g);
+        }
+      }
+    });
+
+    return ComplexNumber.of(ranges);
   }
 
   public remove(num: number): RangeElement {
     if (!this.contains(num)) {
-      throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS NUMBER: ${num}`);
+      throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS INSTANCE: ${num}`);
     }
 
     const nums: Array<number> = this.nums.filter((n: number) => {
@@ -69,7 +85,23 @@ export class DiscreteNumber implements RangeElement {
     return false;
   }
 
-  private iss(): boolean {
-    //
+  private classify(): Array<Array<number>> {
+    let prev: number = this.nums[0];
+    let j: number = 0;
+    const arrr: Array<Array<number>> = [];
+
+    this.nums.forEach((n: number) => {
+      if (prev + 1 === n) {
+        prev = n;
+        arrr[j].push(n);
+
+        return;
+      }
+
+      arrr[j + 1] = [n];
+      j++;
+    });
+
+    return arrr;
   }
 }

@@ -30,7 +30,7 @@ export class UniqueNumber implements RangeElement {
 
   public add(num: number): RangeElement {
     if (!this.ready(num)) {
-      throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS NUMBER: ${num}`);
+      throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS INSTANCE: ${num}`);
     }
 
     if (this.num + 1 === num) {
@@ -48,7 +48,7 @@ export class UniqueNumber implements RangeElement {
       return NoNumber.of();
     }
 
-    throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS NUMBER: ${num}`);
+    throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS INSTANCE: ${num}`);
   }
 
   public serialize(): string {

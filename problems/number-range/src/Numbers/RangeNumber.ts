@@ -42,7 +42,7 @@ export class RangeNumber implements RangeElement {
 
   public add(num: number): RangeElement {
     if (!this.ready(num)) {
-      throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS NUMBER: ${num}`);
+      throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS INSTANCE: ${num}`);
     }
 
     if (this.min - 1 === num) {
@@ -52,12 +52,12 @@ export class RangeNumber implements RangeElement {
       return RangeNumber.of(this.min, num);
     }
 
-    throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS NUMBER: ${num}`);
+    throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS INSTANCE: ${num}`);
   }
 
   public remove(num: number): RangeElement {
     if (!this.contains(num)) {
-      throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS NUMBER: ${num}`);
+      throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS INSTANCE: ${num}`);
     }
 
     if (this.min === num) {
@@ -69,7 +69,7 @@ export class RangeNumber implements RangeElement {
     // TODO
 
 
-    throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS NUMBER: ${num}`);
+    throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS INSTANCE: ${num}`);
   }
 
   public serialize(): string {

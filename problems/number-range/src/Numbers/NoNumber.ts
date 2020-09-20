@@ -20,11 +20,11 @@ export class NoNumber implements RangeElement {
   }
 
   public add(num: number): RangeElement {
-    throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS NUMBER: ${num}`);
+    throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS INSTANCE: ${num}`);
   }
 
   public remove(num: number): RangeElement {
-    throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS NUMBER: ${num}`);
+    throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS INSTANCE: ${num}`);
   }
 
   public serialize(): string {
