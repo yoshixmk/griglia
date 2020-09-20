@@ -18,7 +18,7 @@ export class UniqueNumber implements RangeElement {
   }
 
   public add(num: number): RangeElement {
-    if (this.num === num) {
+    if (this.isValid(num)) {
       return this;
     }
 
@@ -32,11 +32,11 @@ export class UniqueNumber implements RangeElement {
   }
 
   public remove(num: number): RangeElement {
-    if (this.num === num) {
-      return NoNumber.of();
+    if (!this.isValid(num)) {
+      throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS NUMBER: ${num}`);
     }
 
-    return this;
+    return NoNumber.of();
   }
 
   public serialize(): string {

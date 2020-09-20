@@ -1,3 +1,4 @@
+import { DiscreteNumber } from './DiscreteNumber';
 import { RangeElement } from './RangeElement';
 
 export class RangeNumber implements RangeElement {
@@ -44,18 +45,21 @@ export class RangeNumber implements RangeElement {
   }
 
   public remove(num: number): RangeElement {
-    if (this.isValid(num)) {
-      return this;
+    if (!this.isValid(num)) {
+      throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS NUMBER: ${num}`);
     }
 
-    if (this.min - 1 === num) {
-      return RangeNumber.of(num, this.max);
+    if (this.min === num) {
+      return RangeNumber.of(num + 1, this.max);
     }
-    if (this.max + 1 === num) {
-      return RangeNumber.of(this.min, num);
+    if (this.max === num) {
+      return RangeNumber.of(this.min, num - 1);
     }
 
-    throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS NUMBER: ${num}`);
+
+    const range: Array<number> = this.range(this.min, this.max);
+
+    return DiscreteNumber.of(range);
   }
 
   public serialize(): string {
@@ -67,5 +71,13 @@ export class RangeNumber implements RangeElement {
         return `${this.min} - ${this.max}`;
       }
     }
+  }
+
+  private range(start: number, end: number): Array<number> {
+    if (start === end) {
+      return [end];
+    }
+
+    return [start, ...this.range(start + 1, end)];
   }
 }
