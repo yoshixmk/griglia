@@ -6,4 +6,6 @@ export interface RangeElement {
   remove(num: number): RangeElement;
 
   serialize(): string;
+
+  equals(other: RangeElement): boolean;
 }

@@ -1,5 +1,4 @@
 import { RangeElement } from './RangeElement';
-import { UniqueNumber } from './UniqueNumber';
 
 export class NoNumber implements RangeElement {
   private static readonly INSTANCE: NoNumber = new NoNumber();
@@ -17,14 +16,18 @@ export class NoNumber implements RangeElement {
   }
 
   public add(num: number): RangeElement {
-    return UniqueNumber.of(num);
+    throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS NUMBER: ${num}`);
   }
 
-  public remove(): RangeElement {
-    return this;
+  public remove(num: number): RangeElement {
+    throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS NUMBER: ${num}`);
   }
 
   public serialize(): string {
     return '';
+  }
+
+  public equals(other: RangeElement): boolean {
+    return this === other;
   }
 }

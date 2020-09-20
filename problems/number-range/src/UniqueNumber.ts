@@ -22,13 +22,14 @@ export class UniqueNumber implements RangeElement {
       return this;
     }
 
-    const arr: Array<number> = [this.num, num];
+    if (this.num + 1 === num) {
+      return DiscreteNumber.of([this.num, num]);
+    }
+    if (num + 1 === this.num) {
+      return DiscreteNumber.of([num, this.num]);
+    }
 
-    arr.sort((n1: number, n2: number) => {
-      return n1 - n2;
-    });
-
-    return DiscreteNumber.of(arr);
+    throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS NUMBER: ${num}`);
   }
 
   public remove(num: number): RangeElement {
@@ -41,5 +42,16 @@ export class UniqueNumber implements RangeElement {
 
   public serialize(): string {
     return `${this.num}`;
+  }
+
+  public equals(other: RangeElement): boolean {
+    if (this === other) {
+      return true;
+    }
+    if (other instanceof UniqueNumber) {
+      return this.num === other.num;
+    }
+
+    return false;
   }
 }
