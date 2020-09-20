@@ -1,5 +1,5 @@
 import { RangeElement } from '../RangeElement';
-import { DiscreteNumber } from './DiscreteNumber';
+import { ComplexNumber } from './ComplexNumber';
 import { NoNumber } from './NoNumber';
 
 export class UniqueNumber implements RangeElement {
@@ -34,10 +34,16 @@ export class UniqueNumber implements RangeElement {
     }
 
     if (this.num + 1 === num) {
-      return DiscreteNumber.of([this.num, num]);
+      return ComplexNumber.of([
+        this,
+        UniqueNumber.of(num)
+      ]);
     }
     if (num + 1 === this.num) {
-      return DiscreteNumber.of([num, this.num]);
+      return ComplexNumber.of([
+        UniqueNumber.of(num),
+        this
+      ]);
     }
 
     return this;
