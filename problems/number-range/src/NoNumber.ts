@@ -2,8 +2,10 @@ import { RangeElement } from './RangeElement';
 import { UniqueNumber } from './UniqueNumber';
 
 export class NoNumber implements RangeElement {
+  private static readonly INSTANCE: NoNumber = new NoNumber();
+
   public static of(): NoNumber {
-    return new NoNumber();
+    return NoNumber.INSTANCE;
   }
 
   protected constructor() {
