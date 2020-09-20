@@ -4,7 +4,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git@github.com:tegebu/griglia.git/problems/circular-reference-detection"
+    "url": "git@github.com:tegebu/griglia.git"
   },
   "license": "MIT",
   "author": "tegebu <info@tegebu.com>",
