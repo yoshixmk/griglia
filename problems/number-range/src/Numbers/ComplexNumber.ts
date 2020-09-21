@@ -81,4 +81,16 @@ export class ComplexNumber implements RangeElement, Iterable<RangeElement> {
 
     return false;
   }
+
+  public every(predicate: (value: RangeElement, index: number) => unknown): boolean {
+    return this.ranges.every(predicate);
+  }
+
+  public some(predicate: (value: RangeElement, index: number) => unknown): boolean {
+    return this.ranges.some(predicate);
+  }
+
+  public map<U>(callbackfn: (value: RangeElement, index: number) => U): Array<U> {
+    return this.map<U>(callbackfn);
+  }
 }
