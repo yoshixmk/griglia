@@ -1,17 +1,19 @@
 # Griglia
 
+problems
+
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
-## Requirement
+## Requisite
 
 ```
-> node -v       
+> node -v
 v14.5.0
 
-> npm -v        
+> npm -v
 6.14.5
 
-> yarn -v     
+> yarn -v
 1.22.5
 ```
 
@@ -20,6 +22,12 @@ v14.5.0
 ```
 yarn install
 yarn setup
+```
+
+## Conventional commit
+
+```
+git cz
 ```
 
 ## License
