@@ -39,7 +39,9 @@ collection.forEach((v: string, cancel: Cancel) => {
 
   console.log(v);
 });
-// -> alpha beta charlie
+// -> 'alpha'
+// -> 'beta'
+// -> 'charlie'
 ```
 
 ## Concepts
