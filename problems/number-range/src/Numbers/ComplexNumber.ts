@@ -1,14 +1,30 @@
 import { RangeElement } from '../RangeElement';
 
-export class ComplexNumber implements RangeElement {
+export class ComplexNumber implements RangeElement, Iterable<RangeElement> {
   private readonly ranges: Array<RangeElement>;
 
-  public static of(ranges: Array<RangeElement>): ComplexNumber {
-    return new ComplexNumber(ranges);
+  public static of(ranges: ReadonlyArray<RangeElement>): ComplexNumber {
+    const r: Array<RangeElement> = [];
+
+    ranges.forEach((range: RangeElement) => {
+      if (range instanceof ComplexNumber) {
+        r.push(...range);
+
+        return;
+      }
+
+      r.push(range);
+    });
+
+    return new ComplexNumber(r);
   }
 
   protected constructor(ranges: Array<RangeElement>) {
     this.ranges = ranges;
+  }
+
+  public [Symbol.iterator](): Iterator<RangeElement> {
+    return this.ranges[Symbol.iterator]();
   }
 
   public contains(num: number): boolean {
@@ -25,7 +41,7 @@ export class ComplexNumber implements RangeElement {
 
   public add(num: number): RangeElement {
     const ranges: Array<RangeElement> = this.ranges.map<RangeElement>((range: RangeElement) => {
-      if (!range.contains(num)) {
+      if (range.ready(num)) {
         return range.add(num);
       }
 

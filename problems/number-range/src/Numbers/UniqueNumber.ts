@@ -1,6 +1,7 @@
 import { RangeElement } from '../RangeElement';
 import { ComplexNumber } from './ComplexNumber';
 import { NoNumber } from './NoNumber';
+import { RangeNumber } from './RangeNumber';
 
 export class UniqueNumber implements RangeElement {
   private readonly num: number;
@@ -29,15 +30,11 @@ export class UniqueNumber implements RangeElement {
   }
 
   public add(num: number): RangeElement {
-    if (!this.ready(num)) {
-      throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS INSTANCE: ${num}`);
-    }
-
     if (this.num + 1 === num) {
-      return ComplexNumber.of([
+      return RangeNumber.of(
         this,
         UniqueNumber.of(num)
-      ]);
+      );
     }
     if (num + 1 === this.num) {
       return ComplexNumber.of([
@@ -49,12 +46,8 @@ export class UniqueNumber implements RangeElement {
     return this;
   }
 
-  public remove(num: number): RangeElement {
-    if (this.contains(num)) {
-      return NoNumber.of();
-    }
-
-    throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS INSTANCE: ${num}`);
+  public remove(): RangeElement {
+    return NoNumber.of();
   }
 
   public serialize(): string {
@@ -70,5 +63,9 @@ export class UniqueNumber implements RangeElement {
     }
 
     return false;
+  }
+
+  public get(): number {
+    return this.num;
   }
 }

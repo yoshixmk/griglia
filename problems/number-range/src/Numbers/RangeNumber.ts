@@ -1,27 +1,29 @@
 import { RangeElement } from '../RangeElement';
+import { ComplexNumber } from './ComplexNumber';
+import { UniqueNumber } from './UniqueNumber';
 
 export class RangeNumber implements RangeElement {
-  private readonly min: number;
-  private readonly max: number;
+  private readonly min: UniqueNumber;
+  private readonly max: UniqueNumber;
 
-  public static of(min: number, max: number): RangeNumber {
-    if (min >= max) {
-      throw new Error(`MIN >= MAX: GIVEN MIN: ${min}, MAX: ${max}`);
+  public static of(min: UniqueNumber, max: UniqueNumber): RangeNumber {
+    if (min.get() >= max.get()) {
+      throw new Error(`MIN >= MAX: GIVEN MIN: ${min.serialize()}, MAX: ${max.serialize()}`);
     }
 
     return new RangeNumber(min, max);
   }
 
-  protected constructor(min: number, max: number) {
+  protected constructor(min: UniqueNumber, max: UniqueNumber) {
     this.min = min;
     this.max = max;
   }
 
   public contains(num: number): boolean {
-    if (this.min > num) {
+    if (this.min.get() > num) {
       return false;
     }
-    if (this.max < num) {
+    if (this.max.get() < num) {
       return false;
     }
 
@@ -29,10 +31,10 @@ export class RangeNumber implements RangeElement {
   }
 
   public ready(num: number): boolean {
-    if (this.min - 1 === num) {
+    if (this.min.get() - 1 === num) {
       return true;
     }
-    if (this.max + 1 === num) {
+    if (this.max.get() + 1 === num) {
       return true;
     }
 
@@ -41,44 +43,58 @@ export class RangeNumber implements RangeElement {
 
 
   public add(num: number): RangeElement {
-    if (!this.ready(num)) {
-      throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS INSTANCE: ${num}`);
+    if (this.min.get() - 1 === num) {
+      return RangeNumber.of(
+        UniqueNumber.of(num),
+        this.max
+      );
+    }
+    if (this.max.get() + 1 === num) {
+      return RangeNumber.of(
+        this.min,
+        UniqueNumber.of(num)
+      );
     }
 
-    if (this.min - 1 === num) {
-      return RangeNumber.of(num, this.max);
-    }
-    if (this.max + 1 === num) {
-      return RangeNumber.of(this.min, num);
-    }
-
-    throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS INSTANCE: ${num}`);
+    throw this;
   }
 
   public remove(num: number): RangeElement {
-    if (!this.contains(num)) {
-      throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS INSTANCE: ${num}`);
+    const min: number = this.min.get();
+    const max: number = this.max.get();
+
+    if (min === num) {
+      return RangeNumber.of(
+        UniqueNumber.of(num + 1),
+        this.max
+      );
+    }
+    if (max === num) {
+      return RangeNumber.of(
+        this.min,
+        UniqueNumber.of(num - 1)
+      );
+    }
+    if (min < num && num < max) {
+      return ComplexNumber.of([
+        this.minRange(num),
+        this.maxRange(num)
+      ]);
     }
 
-    if (this.min === num) {
-      return RangeNumber.of(num + 1, this.max);
-    }
-    if (this.max === num) {
-      return RangeNumber.of(this.min, num - 1);
-    }
-    // TODO
-
-
-    throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS INSTANCE: ${num}`);
+    return this;
   }
 
   public serialize(): string {
-    switch (this.max - this.min) {
+    const min: number = this.min.get();
+    const max: number = this.max.get();
+
+    switch (max - min) {
       case 1: {
-        return `${this.min}, ${this.max}`;
+        return `${min}, ${max}`;
       }
       default: {
-        return `${this.min} - ${this.max}`;
+        return `${min} - ${max}`;
       }
     }
   }
@@ -99,5 +115,25 @@ export class RangeNumber implements RangeElement {
     }
 
     return false;
+  }
+
+  private minRange(num: number): RangeElement {
+    const min: number = this.min.get();
+
+    if (num - min === 1) {
+      return this.min;
+    }
+
+    return RangeNumber.of(this.min, UniqueNumber.of(num - 1));
+  }
+
+  private maxRange(num: number): RangeElement {
+    const max: number = this.max.get();
+
+    if (max - num === 1) {
+      return this.max;
+    }
+
+    return RangeNumber.of(UniqueNumber.of(num + 1), this.max);
   }
 }
