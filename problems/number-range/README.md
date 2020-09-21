@@ -165,6 +165,10 @@ range.serialize();
     * できるだけ上から実装してください
 * 他のパッケージを使ってはいけません
 
+## Playground
+
+`src/playground.ts`があるので自由に記述して動作させてください。
+
 ### Run playground
 
 ```

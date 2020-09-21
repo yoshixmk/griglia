@@ -54,7 +54,7 @@ collection.forEach((v: string, cancel: Cancel) => {
 
 ## Playground
 
-`src/playground`があるので自由に記述して動作させてください。
+`src/playground.ts`があるので自由に記述して動作させてください。
 
 ### Run playground
 
