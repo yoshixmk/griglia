@@ -1,6 +1,8 @@
 # Functional switch
 
-## Not ready
+`switch`を関数で実装します。
+
+switchとは以下の構文です。
 
 ```typescript
 switch (value) {
@@ -15,211 +17,101 @@ switch (value) {
 }
 ```
 
-を作りましょう
+## Implementation
 
-### Overview
-
-```typescript
-sw(VARIABLE)
-  .case(CONSTANT_VALUE1, FALL_THROUGH, () => {
-    // ...
-  })
-  .case(CONSTANT_VALUE2, FALL_THROUGH, () => {
-    // ...
-  })
-  .case(CONSTANT_VALUE3, () => {
-    // ...
-  })
-  .case(CONSTANT_VALUE4, () => {
-    // ...
-  })
-  .default(() => {
-    // ...
-  })
-  .recover((err) => {
-    //
-  });
-```
-
-## Requirements
-
-1. `sw()` で開始
-1. `case()` について
-    1. `case()` の引数は `CONSTANT_VALUE` , `FALL_THROUGH` , `SUPPLIER` となっている。第2引数の `FALL_THROUGH` は省略が可能で、省略時は第2引数が `SUPPLIER` になる
-    1. `FALL_THROUGH` について
-        1. 初期値は `false`
-        1. `true` を設定すると、次に `false` (省略時の初期値を含む)を指定している `case()` まで全ての `case()` を実施する
-    1. `SUPPLIER` について
-        1. `type Supplier<R> = () => R` の形の関数を `SUPPLIER` という
-        1. `SUPPLIER` で `return` をすればその値が `sw()` の戻り値になる
-1. `default()` について
-    1. どの `case()` にも当てはまらなかったときに実行される
-    1. 第1引数は `SUPPLIER`
-    1. `SUPPLIER` で `return` をすればその値が `sw()` の戻り値になる  
-        ( `case()` と同じ)
-    1. `default()` のうしろに `case()` をつけることはできない
-
-## Advanced
-
-1. 同じ値を `CONSTANT_VALUE` に設定することができないようにする
-1. `CONSTANT_VALUE` に `Array` を設定できるようにする
-1. `Promise` に対応している。 `FALL_THROUGH` が設定されているときは、同時実行ではなく順次実行する
-1. `recover()` を実装する。 `recover()` は `case()` または `default()` のうしろにつけることが可能で、これをつけると `case()` , `default()` で発生した例外を全て補足でき、第1引数にそのインスタンスがくる
-    1. 第1引数は `type UnaryFunction<E, R> = (err: E) => R` の `UNARY_FUNCTION`
-    1. `recover()` のうしろに `case()` , `default()` をつけることはできない
-    1. `return` をすればその値が `sw()` の戻り値になる ( `case()` , `default()` と同じ)
+関数の`sw()`を実装してください。  
+ただし、戻り値が`unknown`で曖昧になっているため書き換える必要があります。
 
 ### Examples
 
-以下ではこの `type aliases` を使用します
+```typescript
+sw(2)
+  .case(0, () => {
+    return 'zero';
+  })
+  .case(1, () => {
+    return 'one';
+  })
+  .case(2, () => {
+    return 'two';
+  })
+  .case(3, () => {
+    return 'three';
+  })
+  .default(() => {
+    return 'other';
+  });
+// -> 'two'
+```
+
+## Concepts
+
+1. `sw()`で開始します
+1. `case()`の第1引数の値と一致すると第2引数の関数を実施し、戻り値を返却します
+    * 一般的な`switch`と異なり、条件に合致したらそれより下の`case()`を実行する必要はありません
+1. `default()`はどの`case()`にも条件が合致しなかったときに実行され、戻り値を返却します
+    * `default()`のうしろに`case()`をつけることができないように実装してください
+1. `case()`のシグネチャを以下に変更して下さい
+    * `case<T>(value: number, fallthrough: boolean | () => T, supplier?: () => T)`
+        * 第2引数に`true`が与えられたときは、たとえ第3引数が実行されてもそこで処理を終わらせず、次の`case()`を実行します
+            * `false`が指定されたときと従来どおり関数が与えられたときは以前と変わりません
+1. Union typesを指定して同じ値の`case()`を作れないようにしてください。
+
+### Examples again
 
 ```typescript
 type DayOfWeek =
-  SUNDAY |
-  MONDAY |
-  TUESDAY |
-  WEDNESDAY |
-  THURSDAY |
-  FRIDAY |
-  SATURDAY;
-```
+  'SUNDAY' |
+  'MONDAY' |
+  'TUESDAY' |
+  'WEDNESDAY' |
+  'THURSDAY' |
+  'FRIDAY' |
+  'SATURDAY';
 
-#### `FALL_THROUGH = true`
-
-```typescript
-sw(MONDAY)
-  .case(SUNDAY, true, () => {
-    console.log('SUNDAY');
+sw('MONDAY')
+  .case('SUNDAY', true, () => {
+    return 'dimanche';
   })
-  .case(MONDAY, true, () => {
-    console.log('MONDAY');
+  .case('MONDAY', true, () => {
+    return 'lundi';
   })
-  .case(TUESDAY, true,() => {
-    console.log('TUESDAY');
+  .case('TUESDAY', true,() => {
+    return 'mardi';
   })
-  .case(WEDNESDAY, true,() => {
-    console.log('WEDNESDAY');
+  .case('WEDNESDAY', true,() => {
+    return 'mercredi';
   })
-  .case(THURSDAY, () => {
-    console.log('THURSDAY');
+  .case('THURSDAY', () => {
+    return 'jeudi';
   })
-  .case(FRIDAY, true, () => {
-    console.log('FRIDAY');
+  .case('FRIDAY', true, () => {
+    return 'vendredi';
   })
-  .case(SATURDAY, true, () => {
-    console.log('SATURDAY');
+  .case('SATURDAY', true, () => {
+    return 'samedi';
   });
 
 // ->
-//  'MONDAY'
-//  'TUESDAY'
-//  'WEDNESDAY'
-//  'THURSDAY'
+//  'lunci'
+//  'mardi'
+//  'mercredi'
+//  'jeudi'
 ```
-
-#### `the same CONSTANT_VALUE`
-
-```typescript
-sw(THURSDAY)
-  .case(SUNDAY, () => {
-    console.log('SUNDAY');
-  })
-  .case(MONDAY, () => {
-    console.log('MONDAY');
-  })
-  .case(TUESDAY, () => {
-    console.log('TUESDAY');
-  })
-  .case(WEDNESDAY, () => {
-    console.log('WEDNESDAY');
-  })
-  .case(THURSDAY, () => {
-    console.log('THURSDAY');
-  })
-  .case(FRIDAY, () => {
-    console.log('FRIDAY');
-  })
-  .case(SATURDAY, () => {
-    console.log('SATURDAY');
-  })
-  .case(SUNDAY, () => {
-    console.log('SUNDAY');
-  });
-
-// -> SUNDAY is duplicated
-```
-
-#### `CONSTANT_VALUE is Array`
-
-```typescript
-sw(THURSDAY)
-  .case([SUNDAY, MONDAY], () => {
-    console.log('SUNDAY AND MONDAY');
-  })
-  .case([TUESDAY, WEDNESDAY], () => {
-    console.log('TUESDAY AND WEDNESDAY');
-  })
-  .case([THURSDAY, FRIDAY], () => {
-    console.log('THURSDAY AND FRIDAY');
-  })
-  .case(SATURDAY, () => {
-    console.log('SATURDAY');
-  });
-
-// ->
-//  'THURSDAY AND FRIDAY'
-```
-
-#### `Promise` is applicable
-
-```typescript
-sw(THURSDAY)
-  .case(SUNDAY, true, async () => {
-    await wait(30, 'seconds');
-    console.log('SUNDAY');
-  })
-  .case(MONDAY, true, async () => {
-    await wait(25, 'seconds');
-    console.log('MONDAY');
-  })
-  .case(TUESDAY, true, async () => {
-    await wait(20, 'seconds');
-    console.log('TUESDAY');
-  })
-  .case(WEDNESDAY, true, async () => {
-    await wait(15, 'seconds');
-    console.log('WEDNESDAY');
-  })
-  .case(THURSDAY, true, async () => {
-    await wait(10, 'seconds');
-    console.log('THURSDAY');
-  })
-  .case(FRIDAY, true, async () => {
-    await wait(5, 'seconds');
-    console.log('FRIDAY');
-  })
-  .case(SATURDAY, true, async () => {
-    await wait(0, 'seconds');
-    console.log('SATURDAY');
-  })
-  .case(SUNDAY, true, () => {
-    console.log('SATURDAY');
-  });
-
-// 10 seconds
-//  -> 'THURSDAY'
-// 5 seconds
-//  -> 'FRIDAY'
-// immediately
-//  -> 'SATURDAY'
-// immediately
-//  -> 'SUNDAY'
-```
-
-## 注意
+## Conditions
 
 * 他のパッケージを使ってはいけません
 
-## テスト
+## Playground
+
+`src/playground.ts`があるので自由に記述して動作させてください。
+
+### Run playground
+
+```
+yarn play
+```
+
+## Tests
 
 テストファイルは提供されません。

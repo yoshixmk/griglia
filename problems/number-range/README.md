@@ -92,49 +92,49 @@ const range: NumberRange = [*NumberRange*].xxx('- 5, 9');
 
 // isValid()
 range.isValid(3);
-// true
+// -> true
 range.isValid(4);
-// true
+// -> true
 range.isValid(5);
-// true
+// -> true
 range.isValid(6);
-// false
+// -> false
 range.isValid(7);
-// false
+// -> false
 range.isValid(8);
-// false
+// -> false
 range.isValid(9);
-// true
+// -> true
 range.isValid(10);
-// false
+// -> false
 
 // add()
 range.add(6);
 range.serialize();
-// - 6, 9
+// -> '- 6, 9'
 range.add(8);
 range.serialize();
-// - 6, 8, 9
+// -> '- 6, 8, 9'
 range.add(10);
 range.serialize();
-// - 6, 8 - 10
+// -> '- 6, 8 - 10'
 range.add(7);
 range.serialize();
-// - 10
+// -> '- 10'
 
 // remove()
 range.remove(7);
 range.serialize();
-// - 6, 8 - 10
+// -> '- 6, 8 - 10'
 range.remove(10);
 range.serialize();
-// - 6, 8, 9
+// -> '- 6, 8, 9'
 range.remove(8);
 range.serialize();
-// - 6, 9
+// -> '- 6, 9'
 range.remove(6);
 range.serialize();
-// - 5, 9
+// -> '- 5, 9'
 ```
 
 ## Concepts
@@ -164,6 +164,10 @@ range.serialize();
 * すべてを実装する必要はありません
     * できるだけ上から実装してください
 * 他のパッケージを使ってはいけません
+
+## Playground
+
+`src/playground.ts`があるので自由に記述して動作させてください。
 
 ### Run playground
 

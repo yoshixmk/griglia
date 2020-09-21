@@ -50,7 +50,6 @@ nan({});
 ## Conditions
 
 * `isNaN()`,`Number.isNaN()`を使ってはいけません
-    * 問題の意義が崩壊します
 * 他のパッケージを使ってはいけません
 
 ## Playground
