@@ -30,6 +30,8 @@ const json: unknown = {
     }
   }
 };
+
+JSON.stringify(json);
 // -> '{"glossary":{"title":"example glossary","GlossDiv":{"title":"S","GlossList":{"GlossEntry":{"ID":"SGML","SortAs":"SGML","GlossTerm":"Standard Generalized Markup Language","Acronym":"SGML","Abbrev":"ISO 8879:1986","GlossDef":{"para":"A meta-markup language, used to create markup languages such as DocBook.","GlossSeeAlso":["GML","XML"]},"GlossSee":"markup"}}}}}"
 ```
 
@@ -99,7 +101,31 @@ beautify(json4);
 // ->
 // []
 
-const json5: ObjectLiteral = [
+const json5: ObjectLiteral = {
+  i: {
+    ro: {
+      ha: {
+        ni: {
+          ho: undefined
+        }
+      }
+    }
+  }
+};
+
+beautify(json5);
+// ->
+// {
+//   i: {
+//     ro: {
+//       ha: {
+//         ni: {}
+//       }
+//     }
+//   }
+// }
+
+const json6: ObjectLiteral = [
   [
     [
       []
@@ -107,7 +133,7 @@ const json5: ObjectLiteral = [
   ]
 ];
 
-beautify(json5);
+beautify(json6);
 // ->
 // [
 //   [
