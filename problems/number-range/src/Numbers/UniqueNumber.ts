@@ -1,24 +1,26 @@
-import { RangeElement } from '../RangeElement';
-import { ComplexNumber } from './ComplexNumber';
+import { RangeFactory } from '../RangeFactory';
 import { NoNumber } from './NoNumber';
+import { RangeElement } from './RangeElement';
 import { RangeNumber } from './RangeNumber';
 
 export class UniqueNumber implements RangeElement {
   private readonly num: number;
+  private readonly mediator: RangeFactory;
 
-  public static of(num: number): UniqueNumber {
-    return new UniqueNumber(num);
+  public static of(num: number, mediator: RangeFactory): UniqueNumber {
+    return new UniqueNumber(num, mediator);
   }
 
-  protected constructor(num: number) {
+  protected constructor(num: number, mediator: RangeFactory) {
     this.num = num;
+    this.mediator = mediator;
   }
 
   public contains(num: number): boolean {
     return this.num === num;
   }
 
-  public ready(num: number): boolean {
+  public isAcceptable(num: number): boolean {
     if (this.num + 1 === num) {
       return true;
     }
@@ -31,19 +33,13 @@ export class UniqueNumber implements RangeElement {
 
   public add(num: number): RangeElement {
     if (this.num + 1 === num) {
-      return RangeNumber.of(
-        this,
-        UniqueNumber.of(num)
-      );
+      return RangeNumber.of(this.num, num, this.mediator);
     }
     if (num + 1 === this.num) {
-      return ComplexNumber.of([
-        UniqueNumber.of(num),
-        this
-      ]);
+      return RangeNumber.of(num, this.num, this.mediator);
     }
 
-    return this;
+    throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS INSTANCE: ${num}`);
   }
 
   public remove(): RangeElement {

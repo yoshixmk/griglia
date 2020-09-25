@@ -1,30 +1,35 @@
-import { RangeElement } from '../RangeElement';
+import { NoNumber } from './NoNumber';
+import { RangeElement } from './RangeElement';
 
-export class ComplexNumber implements RangeElement, Iterable<RangeElement> {
-  private readonly ranges: Array<RangeElement>;
+export class ComplexNumber implements RangeElement {
+  private readonly ranges: ReadonlyArray<RangeElement>;
 
   public static of(ranges: ReadonlyArray<RangeElement>): ComplexNumber {
-    const r: Array<RangeElement> = [];
+    const arr: Array<RangeElement> = [];
 
-    ranges.forEach((range: RangeElement) => {
-      if (range instanceof ComplexNumber) {
-        r.push(...range);
-
-        return;
-      }
-
-      r.push(range);
+    ranges.filter((range: RangeElement) => {
+      return !(range instanceof NoNumber);
+    }).forEach((range: RangeElement) => {
+      ComplexNumber.flatten(range, arr);
     });
 
-    return new ComplexNumber(r);
+    return new ComplexNumber(arr);
   }
 
-  protected constructor(ranges: Array<RangeElement>) {
+  private static flatten(range: RangeElement, arr: Array<RangeElement>) {
+    if (range instanceof ComplexNumber) {
+      range.ranges.forEach((r: RangeElement) => {
+        ComplexNumber.flatten(r, arr);
+      });
+
+      return;
+    }
+
+    arr.push(range);
+  }
+
+  protected constructor(ranges: ReadonlyArray<RangeElement>) {
     this.ranges = ranges;
-  }
-
-  public [Symbol.iterator](): Iterator<RangeElement> {
-    return this.ranges[Symbol.iterator]();
   }
 
   public contains(num: number): boolean {
@@ -33,15 +38,15 @@ export class ComplexNumber implements RangeElement, Iterable<RangeElement> {
     });
   }
 
-  public ready(num: number): boolean {
+  public isAcceptable(num: number): boolean {
     return this.ranges.some((range: RangeElement) => {
-      return range.ready(num);
+      return range.isAcceptable(num);
     });
   }
 
-  public add(num: number): RangeElement {
-    const ranges: Array<RangeElement> = this.ranges.map<RangeElement>((range: RangeElement) => {
-      if (range.ready(num)) {
+  public add(num: number): ComplexNumber {
+    const ranges: Array<RangeElement> = this.ranges.map((range: RangeElement) => {
+      if (range.isAcceptable(num)) {
         return range.add(num);
       }
 
@@ -51,7 +56,7 @@ export class ComplexNumber implements RangeElement, Iterable<RangeElement> {
     return ComplexNumber.of(ranges);
   }
 
-  public remove(num: number): RangeElement {
+  public remove(num: number): ComplexNumber {
     const ranges: Array<RangeElement> = this.ranges.map<RangeElement>((range: RangeElement) => {
       if (range.contains(num)) {
         return range.remove(num);
@@ -82,15 +87,7 @@ export class ComplexNumber implements RangeElement, Iterable<RangeElement> {
     return false;
   }
 
-  public every(predicate: (value: RangeElement, index: number) => unknown): boolean {
-    return this.ranges.every(predicate);
-  }
-
   public some(predicate: (value: RangeElement, index: number) => unknown): boolean {
     return this.ranges.some(predicate);
-  }
-
-  public map<U>(callbackfn: (value: RangeElement, index: number) => U): Array<U> {
-    return this.map<U>(callbackfn);
   }
 }

@@ -1,4 +1,4 @@
-import { RangeElement } from '../RangeElement';
+import { RangeElement } from './RangeElement';
 
 export class NoNumber implements RangeElement {
   private static readonly INSTANCE: NoNumber = new NoNumber();
@@ -15,7 +15,7 @@ export class NoNumber implements RangeElement {
     return false;
   }
 
-  public ready(): boolean {
+  public isAcceptable(): boolean {
     return false;
   }
 
