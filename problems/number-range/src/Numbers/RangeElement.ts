@@ -1,7 +1,7 @@
 export interface RangeElement {
   contains(num: number): boolean;
 
-  ready(num: number): boolean;
+  isAcceptable(num: number): boolean;
 
   add(num: number): RangeElement;
 
