@@ -3,9 +3,10 @@ import { RangeFactory } from '../RangeFactory';
 
 describe('ComplexRange', () => {
   it('tests', () => {
+    // TODO Factory remains
     const factory: RangeFactory = RangeFactory.of(0, 20, 2);
 
-    const range: NumberRange = factory.forge('1');
+    const range: NumberRange = factory.forge('1, 2, 3');
 
     console.log(range.serialize());
 
