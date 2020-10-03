@@ -39,7 +39,9 @@ collection.forEach((v: string, cancel: Cancel) => {
 
   console.log(v);
 });
-// -> alpha beta charlie
+// -> 'alpha'
+// -> 'beta'
+// -> 'charlie'
 ```
 
 ## Concepts
@@ -54,7 +56,7 @@ collection.forEach((v: string, cancel: Cancel) => {
 
 ## Playground
 
-`src/playground`があるので自由に記述して動作させてください。
+`src/playground.ts`があるので自由に記述して動作させてください。
 
 ### Run playground
 
