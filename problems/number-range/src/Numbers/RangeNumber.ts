@@ -95,6 +95,30 @@ export class RangeNumber implements RangeElement {
     return true;
   }
 
+  public merge(other: RangeElement): RangeElement {
+    if (other instanceof NoNumber) {
+      return this;
+    }
+    if (other instanceof UniqueNumber) {
+      if (this.isAcceptable(other.get())) {
+        return this;
+      }
+
+      return ComplexNumber.of([this, other]);
+    }
+    if (other instanceof RangeNumber) {
+      const minimum: number = Math.min(this.min, other.min);
+      const maximum: number = Math.max(this.max, other.max);
+
+      return RangeNumber.of(minimum, maximum, this.mediator);
+    }
+    if (other instanceof ComplexNumber) {
+      return other.merge(this);
+    }
+
+    throw new Error('UNEXPECTED CLASS INSTANCE GIVEN');
+  }
+
   private minRange(num: number): RangeElement {
     switch (num - this.min) {
       case 0: {

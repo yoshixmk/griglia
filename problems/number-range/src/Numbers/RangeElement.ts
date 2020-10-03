@@ -10,4 +10,6 @@ export interface RangeElement {
   serialize(): string;
 
   equals(other: RangeElement): boolean;
+
+  merge(other: RangeElement): RangeElement;
 }

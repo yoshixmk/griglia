@@ -1,5 +1,7 @@
 import { NoNumber } from './NoNumber';
 import { RangeElement } from './RangeElement';
+import { RangeNumber } from './RangeNumber';
+import { UniqueNumber } from './UniqueNumber';
 
 export class ComplexNumber implements RangeElement {
   private readonly ranges: ReadonlyArray<RangeElement>;
@@ -7,16 +9,14 @@ export class ComplexNumber implements RangeElement {
   public static of(ranges: ReadonlyArray<RangeElement>): ComplexNumber {
     const arr: Array<RangeElement> = [];
 
-    ranges.filter((range: RangeElement) => {
-      return !(range instanceof NoNumber);
-    }).forEach((range: RangeElement) => {
+    ranges.forEach((range: RangeElement) => {
       ComplexNumber.flatten(range, arr);
     });
 
     return new ComplexNumber(arr);
   }
 
-  private static flatten(range: RangeElement, arr: Array<RangeElement>) {
+  private static flatten(range: RangeElement, arr: Array<RangeElement>): void {
     if (range instanceof ComplexNumber) {
       range.ranges.forEach((r: RangeElement) => {
         ComplexNumber.flatten(r, arr);
@@ -87,7 +87,32 @@ export class ComplexNumber implements RangeElement {
     return false;
   }
 
-  public some(predicate: (value: RangeElement, index: number) => unknown): boolean {
-    return this.ranges.some(predicate);
+  public merge(other: RangeElement): RangeElement {
+    if (other instanceof NoNumber) {
+      return this;
+    }
+    if (other instanceof UniqueNumber) {
+      if (this.contains(other.get())) {
+        return this;
+      }
+
+      return ComplexNumber.of([this, other]);
+    }
+    if (other instanceof RangeNumber) {
+      const ranges: RangeElement[] = this.ranges.map<RangeElement>((r: RangeElement) => {
+        return other.merge(r);
+      });
+
+      return ComplexNumber.of(ranges);
+    }
+    if (other instanceof ComplexNumber) {
+      return ComplexNumber.of([this, other]);
+    }
+
+    throw new Error('UNEXPECTED CLASS INSTANCE GIVEN');
+  }
+
+  public reduce(callback: (prev: RangeElement, curr: RangeElement, index: number) => RangeElement, initial: RangeElement): RangeElement {
+    return this.ranges.reduce(callback, initial);
   }
 }

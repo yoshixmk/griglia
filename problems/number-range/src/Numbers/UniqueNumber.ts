@@ -1,4 +1,5 @@
 import { NumberMediator } from '../NumberMediator';
+import { ComplexNumber } from './ComplexNumber';
 import { NoNumber } from './NoNumber';
 import { RangeElement } from './RangeElement';
 import { RangeNumber } from './RangeNumber';
@@ -42,8 +43,12 @@ export class UniqueNumber implements RangeElement {
     throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS INSTANCE: ${num}`);
   }
 
-  public remove(): RangeElement {
-    return NoNumber.of();
+  public remove(num: number): RangeElement {
+    if (this.num === num) {
+      return NoNumber.of();
+    }
+
+    throw new Error(`THIS VALUE IS NOT SUITABLE FOR THIS INSTANCE: ${num}`);
   }
 
   public serialize(): string {
@@ -59,6 +64,20 @@ export class UniqueNumber implements RangeElement {
     }
 
     return false;
+  }
+
+  public merge(other: RangeElement): RangeElement {
+    if (other instanceof NoNumber) {
+      return this;
+    }
+    if (other.contains(this.num)) {
+      return other;
+    }
+    if (other.isAcceptable(this.num)) {
+      return other.add(this.num);
+    }
+
+    return ComplexNumber.of([this, other]);
   }
 
   public get(): number {

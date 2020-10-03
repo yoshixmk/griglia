@@ -34,4 +34,8 @@ export class NoNumber implements RangeElement {
   public equals(other: RangeElement): boolean {
     return this === other;
   }
+
+  public merge(other: RangeElement): RangeElement {
+    return other;
+  }
 }
