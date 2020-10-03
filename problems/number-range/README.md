@@ -85,78 +85,78 @@
 
 ## Examples
 
-以下の例ではコンストラクタは曖昧に書かれています。
+以下の例ではインスタンス生成のためのファクトリは曖昧に書かれています。
 
 ```typescript
 const range: NumberRange = [*NumberRange*].xxx('- 5, 9');
 
 // isValid()
 range.isValid(3);
-// true
+// -> true
 range.isValid(4);
-// true
+// -> true
 range.isValid(5);
-// true
+// -> true
 range.isValid(6);
-// false
+// -> false
 range.isValid(7);
-// false
+// -> false
 range.isValid(8);
-// false
+// -> false
 range.isValid(9);
-// true
+// -> true
 range.isValid(10);
-// false
+// -> false
 
 // add()
 range.add(6);
 range.serialize();
-// - 6, 9
+// -> '- 6, 9'
 range.add(8);
 range.serialize();
-// - 6, 8, 9
+// -> '- 6, 8, 9'
 range.add(10);
 range.serialize();
-// - 6, 8 - 10
+// -> '- 6, 8 - 10'
 range.add(7);
 range.serialize();
-// - 10
+// -> '- 10'
 
 // remove()
 range.remove(7);
 range.serialize();
-// - 6, 8 - 10
+// -> '- 6, 8 - 10'
 range.remove(10);
 range.serialize();
-// - 6, 8, 9
+// -> '- 6, 8, 9'
 range.remove(8);
 range.serialize();
-// - 6, 9
-range.add(6);
+// -> '- 6, 9'
+range.remove(6);
 range.serialize();
-// - 5, 9
+// -> '- 5, 9'
 ```
 
 ## Concepts
 
 1. 値は`0`以上の`20`以下の整数を考えます
     * 下限値と上限値は変更できるようにし、magic numberの使用を避けてください
-    * 好ましくない`number`に対するvalidationをしてください
-        * `0`未満の値、`20`超過の値
-        * 小数部を含む値
-        * `NaN`
     * 上限を表す`- X`は範囲の`0 - X`と考えてください
     * 下限を表す`X -`は範囲の`X - 20`と考えてください
 1. 文字列が与えられたときに、それをそのデータ構造に変換するためのファクトリメソッドを定義してください
+    * 与えられるstring型の引数は必ず正しいものであり、バリデーションは不要です
 1. あるnumber型の引数を受けてその値が数値表現と適合するかを判定できるメソッド`isValid()`を定義してください
 1. 新しく数値表現を追加できるメソッド`add()`を実装してください
+    * 与えられるnumber型の引数は必ず正しいものであり、バリデーションは不要です
 1. 新しく数値表現を削除できるメソッド`remove()`を実装してください
+    * 与えられるnumber型の引数は必ず正しいものであり、バリデーションは不要です
 1. `add(), remove()`によって数値表現を変更できるようにしてください
     * `- 7, 9`に`8`を追加すると`- 9`になります
 1. 1値は3値連続すると範囲に変わるようにしてください
     * 1値を追加する想像図は以下です
         * `4` -> `4, 5` -> `4 - 6`
-    * 連続する範囲が`remove()`によって取り除かれた場合は表記を1値に戻してください
+        * `0` -> `0, 1` -> `- 2`
+    * 連続する範囲が`remove()`によって取り除かれた場合は表記を離散(複合)に戻してください
         * `1 - 5` -> `1, 2, 4, 5`
 
 ## Conditions
@@ -164,6 +164,16 @@ range.serialize();
 * すべてを実装する必要はありません
     * できるだけ上から実装してください
 * 他のパッケージを使ってはいけません
+
+## Playground
+
+`src/playground.ts`があるので自由に記述して動作させてください。
+
+### Run playground
+
+```
+yarn play
+```
 
 ## Tests
 

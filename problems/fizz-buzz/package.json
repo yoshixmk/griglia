@@ -4,13 +4,13 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git@github.com:tegebu/griglia.git/problems/fizz-buzz"
+    "url": "git@github.com:tegebu/griglia.git"
   },
   "license": "MIT",
   "author": "tegebu <info@tegebu.com>",
   "scripts": {
     "build": "yarn clean && tsc -p tsconfig.json",
-    "clean": "rimraf dist",
+    "clean": "rimraf dist && rimraf coverage",
     "format": "eslint --fix 'src/**/*.{ts,tsx}'",
     "play": "ts-node src/playground.ts",
     "test": "jest test",

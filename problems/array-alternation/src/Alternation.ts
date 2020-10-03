@@ -1,5 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const alternate = <T>(...arrays: Array<Array<T>>): Array<T> => {
+export const alternate = <T>(...arrays: ReadonlyArray<ReadonlyArray<T>>): Array<T> => {
   // TODO
   console.log(arrays);
 
