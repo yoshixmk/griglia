@@ -1,4 +1,4 @@
-import { RangeFactory } from '../RangeFactory';
+import { NumberMediator } from '../NumberMediator';
 import { ComplexNumber } from './ComplexNumber';
 import { NoNumber } from './NoNumber';
 import { RangeElement } from './RangeElement';
@@ -7,9 +7,9 @@ import { UniqueNumber } from './UniqueNumber';
 export class RangeNumber implements RangeElement {
   private readonly min: number;
   private readonly max: number;
-  private readonly mediator: RangeFactory;
+  private readonly mediator: NumberMediator;
 
-  public static of(min: number, max: number, mediator: RangeFactory): RangeNumber {
+  public static of(min: number, max: number, mediator: NumberMediator): RangeNumber {
     if (min >= max) {
       throw new Error(`MIN >= MAX: GIVEN MIN: ${min}, MAX: ${max}`);
     }
@@ -17,7 +17,7 @@ export class RangeNumber implements RangeElement {
     return new RangeNumber(min, max, mediator);
   }
 
-  protected constructor(min: number, max: number, mediator: RangeFactory) {
+  protected constructor(min: number, max: number, mediator: NumberMediator) {
     this.min = min;
     this.max = max;
     this.mediator = mediator;

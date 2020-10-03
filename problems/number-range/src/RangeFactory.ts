@@ -1,4 +1,5 @@
 import { ComplexRange } from './ComplexRange';
+import { NumberMediator } from './NumberMediator';
 import { NumberRange } from './NumberRange';
 import { ComplexNumber } from './Numbers/ComplexNumber';
 import { RangeElement } from './Numbers/RangeElement';
@@ -8,7 +9,7 @@ import { UniqueNumber } from './Numbers/UniqueNumber';
 // eslint-disable-next-line @typescript-eslint/no-inferrable-types
 const UNIQUE_NUM: RegExp = /\d+/u;
 
-export class RangeFactory {
+export class RangeFactory implements NumberMediator {
   private readonly min: number;
   private readonly max: number;
   private readonly minAbbr: number;
@@ -23,6 +24,18 @@ export class RangeFactory {
     this.minAbbr = minAbbr;
   }
 
+  public getMin(): number {
+    return this.min;
+  }
+
+  public getMax(): number {
+    return this.max;
+  }
+
+  public getMinAbbr(): number {
+    return this.minAbbr;
+  }
+
   public forge(str: string): NumberRange {
     const ranges: Array<RangeElement> = str.split(', ').map<RangeElement>((s: string) => {
       if (UNIQUE_NUM.test(s)) {
@@ -34,17 +47,5 @@ export class RangeFactory {
     });
 
     return ComplexRange.of(ComplexNumber.of(ranges));
-  }
-
-  public getMin(): number {
-    return this.min;
-  }
-
-  public getMax(): number {
-    return this.max;
-  }
-
-  public getMinAbbr(): number {
-    return this.minAbbr;
   }
 }

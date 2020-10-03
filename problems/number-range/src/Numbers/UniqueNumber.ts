@@ -1,17 +1,17 @@
-import { RangeFactory } from '../RangeFactory';
+import { NumberMediator } from '../NumberMediator';
 import { NoNumber } from './NoNumber';
 import { RangeElement } from './RangeElement';
 import { RangeNumber } from './RangeNumber';
 
 export class UniqueNumber implements RangeElement {
   private readonly num: number;
-  private readonly mediator: RangeFactory;
+  private readonly mediator: NumberMediator;
 
-  public static of(num: number, mediator: RangeFactory): UniqueNumber {
+  public static of(num: number, mediator: NumberMediator): UniqueNumber {
     return new UniqueNumber(num, mediator);
   }
 
-  protected constructor(num: number, mediator: RangeFactory) {
+  protected constructor(num: number, mediator: NumberMediator) {
     this.num = num;
     this.mediator = mediator;
   }
