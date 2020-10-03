@@ -5,7 +5,7 @@ describe('ComplexRange', () => {
   it('tests', () => {
     const factory: RangeFactory = RangeFactory.of(0, 20, 2);
 
-    const range: NumberRange = factory.forge('4 -');
+    const range: NumberRange = factory.forge('1, 2, 4');
 
     console.log(range.serialize());
 

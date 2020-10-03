@@ -9,11 +9,11 @@ import { UniqueNumber } from './Numbers/UniqueNumber';
 // eslint-disable-next-line @typescript-eslint/no-inferrable-types
 const UNIQUE_NUM: RegExp = /\d+/u;
 // eslint-disable-next-line @typescript-eslint/no-inferrable-types
-const RANGE_NUM: RegExp = /\d+ - \d+/u;
+const RANGE_NUM: RegExp = /\d+\s*-\s*\d+/u;
 // eslint-disable-next-line @typescript-eslint/no-inferrable-types
-const MIN_NUM: RegExp = /\d+ -/u;
+const MIN_NUM: RegExp = /\d+\s*-/u;
 // eslint-disable-next-line @typescript-eslint/no-inferrable-types
-const MAX_NUM: RegExp = /- \d+/u;
+const MAX_NUM: RegExp = /-\s*\d+/u;
 
 export class RangeFactory implements NumberMediator {
   private readonly min: number;
