@@ -62,41 +62,41 @@ describe("NumberRange", () => {
     expect(range.isValid(4)).toStrictEqual(false);
   });
 
-  it("serialize single", () => {
-    const range: NumberRange = new IntegerRange("5");
-    expect(range.serialize()).toStrictEqual("5");
-    range.add(6);
-    expect(range.serialize()).toStrictEqual("5, 6");
+  // it("serialize single", () => {
+  //   const range: NumberRange = new IntegerRange("5");
+  //   expect(range.serialize()).toStrictEqual("5");
+  //   range.add(6);
+  //   expect(range.serialize()).toStrictEqual("5, 6");
+  // });
+  // it('serialize upper-range', () => {
+  //   const range: NumberRange = new IntegerRange('1 - 5');
+  //   expect(range.serialize()).toStrictEqual('1 - 5');
+  // });
+
+  it('serialize bottom cases', () => {
+    const range: NumberRange = new IntegerRange('- 3');
+    expect(range.serialize()).toStrictEqual('- 3');
   });
-  it('serialize upper-range', () => {
-    const range: NumberRange = new IntegerRange('1 - 5');
-    expect(range.serialize()).toStrictEqual('1 - 5');
+  it('serialize bottom, single cases', () => {
+    const range: NumberRange = new IntegerRange('- 3, 5');
+    expect(range.serialize()).toStrictEqual('- 3');
+  });
+  it('serialize top cases', () => {
+    const range: NumberRange = new IntegerRange('18 -');
+    expect(range.serialize()).toStrictEqual('18 -');
+  });
+  it('serialize single, top cases', () => {
+    const range: NumberRange = new IntegerRange('15, 18 -');
+    expect(range.serialize()).toStrictEqual('18 -');
+  });
+  it('serialize bottom, top cases', () => {
+    const range: NumberRange = new IntegerRange('- 3, 18 -');
+    expect(range.serialize()).toStrictEqual('- 3, 18 -');
   });
 });
 
-/*
-range.add(8);
-range.serialize();
-// - 6, 8, 9
-range.add(10);
-range.serialize();
-// - 6, 8 - 10
-range.add(7);
-range.serialize();
-// - 10
-
-// remove()
-range.remove(7);
-range.serialize();
-// - 6, 8 - 10
-range.remove(10);
-range.serialize();
-// - 6, 8, 9
-range.remove(8);
-range.serialize();
-// - 6, 9
-range.add(6);
-range.serialize();
-// - 5, 9
-
-*/
+// it('serialize all cases', () => {
+//   const range: NumberRange = new IntegerRange('- 3, 5, 6, 10 - 13, 15, 16, 19 -');
+//   expect(range.serialize()).toStrictEqual('- 3, 5, 6, 10 - 13, 15, 16, 19 -');
+//   // expect(range.isValid(2)).toStrictEqual('- 3, 5, 6, 10 - 13, 15, 16. 19 -');
+// });
